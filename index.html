@@ -63,44 +63,6 @@
             background-color: #f8f9fa;
         }
         
-        .dark-mode {
-            background-color: #1a202c;
-            color: #f7fafc;
-        }
-        
-        .dark-mode .bg-white {
-            background-color: #2d3748;
-            color: #f7fafc;
-        }
-        
-        .dark-mode .text-gray-700 {
-            color: #f7fafc;
-        }
-        
-        .dark-mode .bg-gray-100 {
-            background-color: #4a5568;
-        }
-        
-        .dark-mode .border-gray-200 {
-            border-color: #4a5568;
-        }
-        
-        .dark-mode .text-gray-900 {
-            color: #f7fafc;
-        }
-        
-        .dark-mode .bg-lightBlue {
-            background-color: #2d3748;
-        }
-        
-        .dark-mode header {
-            background-color: #2d3748;
-        }
-        
-        .dark-mode footer {
-            background-color: #1a202c;
-        }
-        
         .testimonial-card {
             transition: all 0.3s ease;
         }
@@ -168,34 +130,46 @@
             </nav>
             
             <div class="flex items-center">
-                <a href="index.html#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mr-4">Book Appointment</a>
-                <button id="darkModeToggle" class="text-gray-600 hover:text-primary">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="md:hidden ml-4 text-gray-600">
+                <a href="#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition">Book Appointment</a>
+                <button id="mobileMenuToggle" class="md:hidden ml-4 text-gray-600 hover:text-primary">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="container mx-auto px-4 py-4">
+                <nav class="flex flex-col space-y-4">
+                    <a href="#home" class="text-primary font-semibold hover:text-secondary transition py-2">Home</a>
+                    <a href="#about" class="hover:text-secondary transition py-2">About</a>
+                    <a href="#services" class="hover:text-secondary transition py-2">Services</a>
+                    <a href="#insurance" class="hover:text-secondary transition py-2">Insurance</a>
+                    <a href="#testimonials" class="hover:text-secondary transition py-2">Testimonials</a>
+                    <a href="#contact" class="hover:text-secondary transition py-2">Contact</a>
+                    <a href="#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition text-center mt-4">Book Appointment</a>
+                </nav>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg h-screen flex items-center relative">
+    <section id="home" class="hero-bg min-h-screen flex items-center relative">
         <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
-        <div class="container mx-auto px-4 text-center relative z-10">
+        <div class="container mx-auto px-4 text-center relative z-10 py-20">
             <div class="max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
                     Welcome to <span class="text-accent">Afya Mile</span> Dental Clinic
                 </h1>
-                <p class="text-xl md:text-2xl text-white mb-8 font-light">Your Smile, Our Priority - Excellence in Dental Care</p>
-                <p class="text-lg md:text-xl text-gray-100 mb-10 max-w-2xl mx-auto">
+                <p class="text-lg sm:text-xl md:text-2xl text-white mb-6 md:mb-8 font-light px-4">Your Smile, Our Priority - Excellence in Dental Care</p>
+                <p class="text-base sm:text-lg md:text-xl text-gray-100 mb-8 md:mb-10 max-w-2xl mx-auto px-4">
                     Experience world-class dental care with our team of experienced professionals using state-of-the-art technology
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#appointment" class="bg-accent text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-secondary hover:text-white transition transform hover:scale-105 shadow-lg">
+                <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
+                    <a href="#appointment" class="bg-accent text-gray-900 px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:bg-secondary hover:text-white transition transform hover:scale-105 shadow-lg">
                         <i class="fas fa-calendar-plus mr-2"></i>Book an Appointment
                     </a>
-                    <a href="#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-primary transition transform hover:scale-105">
+                    <a href="#contact" class="bg-transparent border-2 border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:bg-white hover:text-primary transition transform hover:scale-105">
                         <i class="fas fa-phone mr-2"></i>Contact Us
                     </a>
                 </div>
@@ -204,65 +178,65 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-lightBlue">
+    <section id="about" class="py-16 md:py-20 bg-lightBlue">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">About Afya Mile Dental Clinic</h2>
                 <div class="w-20 h-1 bg-secondary mx-auto"></div>
             </div>
             
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
-                    <p class="mb-6">At Afya Mile Dental Clinic, we are committed to providing exceptional dental care with compassion and professionalism. Our goal is to ensure every patient leaves with a healthy, confident smile.</p>
-                    <h3 class="text-2xl font-bold mb-4">Why Choose Us?</h3>
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4">Our Mission</h3>
+                    <p class="mb-6 text-sm md:text-base">At Afya Mile Dental Clinic, we are committed to providing exceptional dental care with compassion and professionalism. Our goal is to ensure every patient leaves with a healthy, confident smile.</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-4">Why Choose Us?</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Experienced and qualified dental professionals</span>
+                            <span class="text-sm md:text-base">Experienced and qualified dental professionals</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Modern dental equipment and technology</span>
+                            <span class="text-sm md:text-base">Modern dental equipment and technology</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Comfortable and relaxing environment</span>
+                            <span class="text-sm md:text-base">Comfortable and relaxing environment</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Personalized treatment plans</span>
+                            <span class="text-sm md:text-base">Personalized treatment plans</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="md:w-1/2">
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-center">Insurance Partners</h3>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                            <div class="insurance-card bg-white p-4 rounded-lg shadow text-center">
-                                <i class="fas fa-building text-3xl text-secondary mb-2"></i>
-                                <p class="font-bold">NHIF</p>
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl md:text-2xl font-bold mb-6 text-center">Insurance Partners</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                            <div class="insurance-card bg-white p-3 md:p-4 rounded-lg shadow text-center">
+                                <i class="fas fa-building text-2xl md:text-3xl text-secondary mb-2"></i>
+                                <p class="font-bold text-sm md:text-base">NHIF</p>
                             </div>
-                            <div class="insurance-card bg-white p-4 rounded-lg shadow text-center">
-                                <i class="fas fa-building text-3xl text-secondary mb-2"></i>
-                                <p class="font-bold">Jubilee</p>
+                            <div class="insurance-card bg-white p-3 md:p-4 rounded-lg shadow text-center">
+                                <i class="fas fa-building text-2xl md:text-3xl text-secondary mb-2"></i>
+                                <p class="font-bold text-sm md:text-base">Jubilee</p>
                             </div>
-                            <div class="insurance-card bg-white p-4 rounded-lg shadow text-center">
-                                <i class="fas fa-building text-3xl text-secondary mb-2"></i>
-                                <p class="font-bold">AAR</p>
+                            <div class="insurance-card bg-white p-3 md:p-4 rounded-lg shadow text-center">
+                                <i class="fas fa-building text-2xl md:text-3xl text-secondary mb-2"></i>
+                                <p class="font-bold text-sm md:text-base">AAR</p>
                             </div>
-                            <div class="insurance-card bg-white p-4 rounded-lg shadow text-center">
-                                <i class="fas fa-building text-3xl text-secondary mb-2"></i>
-                                <p class="font-bold">Madison</p>
+                            <div class="insurance-card bg-white p-3 md:p-4 rounded-lg shadow text-center">
+                                <i class="fas fa-building text-2xl md:text-3xl text-secondary mb-2"></i>
+                                <p class="font-bold text-sm md:text-base">Madison</p>
                             </div>
-                            <div class="insurance-card bg-white p-4 rounded-lg shadow text-center">
-                                <i class="fas fa-building text-3xl text-secondary mb-2"></i>
-                                <p class="font-bold">Minet</p>
+                            <div class="insurance-card bg-white p-3 md:p-4 rounded-lg shadow text-center">
+                                <i class="fas fa-building text-2xl md:text-3xl text-secondary mb-2"></i>
+                                <p class="font-bold text-sm md:text-base">Minet</p>
                             </div>
-                            <div class="insurance-card bg-white p-4 rounded-lg shadow text-center">
-                                <i class="fas fa-building text-3xl text-secondary mb-2"></i>
-                                <p class="font-bold">MTN</p>
+                            <div class="insurance-card bg-white p-3 md:p-4 rounded-lg shadow text-center">
+                                <i class="fas fa-building text-2xl md:text-3xl text-secondary mb-2"></i>
+                                <p class="font-bold text-sm md:text-base">MTN</p>
                             </div>
                         </div>
                     </div>
@@ -272,24 +246,24 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20">
+    <section id="services" class="py-16 md:py-20">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Dental Services</h2>
                 <div class="w-20 h-1 bg-secondary mx-auto"></div>
-                <p class="mt-6 text-lg max-w-2xl mx-auto">We offer comprehensive dental care services to meet all your oral health needs</p>
+                <p class="mt-6 text-base md:text-lg max-w-2xl mx-auto">We offer comprehensive dental care services to meet all your oral health needs</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Service 1 -->
                 <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden transition">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-tooth text-6xl text-primary"></i>
+                    <div class="h-40 md:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-tooth text-4xl md:text-6xl text-primary"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">General Dentistry</h3>
-                        <p class="mb-4">Comprehensive dental care including cleanings, exams, fillings, and preventive treatments to maintain your oral health.</p>
-                        <a href="/general-dentistry.html" class="text-primary font-semibold hover:text-secondary flex items-center">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-3">General Dentistry</h3>
+                        <p class="mb-4 text-sm md:text-base">Comprehensive dental care including cleanings, exams, fillings, and preventive treatments to maintain your oral health.</p>
+                        <a href="/general-dentistry.html" class="text-primary font-semibold hover:text-secondary flex items-center text-sm md:text-base">
                             Learn More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -297,13 +271,13 @@
                 
                 <!-- Service 2 -->
                 <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden transition">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-teeth text-6xl text-primary"></i>
+                    <div class="h-40 md:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-teeth text-4xl md:text-6xl text-primary"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">Orthodontics</h3>
-                        <p class="mb-4">Braces and aligners to straighten teeth and correct bite issues for a confident, healthy smile.</p>
-                        <a href="/orthodontics.html" class="text-primary font-semibold hover:text-secondary flex items-center">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-3">Orthodontics</h3>
+                        <p class="mb-4 text-sm md:text-base">Braces and aligners to straighten teeth and correct bite issues for a confident, healthy smile.</p>
+                        <a href="/orthodontics.html" class="text-primary font-semibold hover:text-secondary flex items-center text-sm md:text-base">
                             Learn More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -311,13 +285,13 @@
                 
                 <!-- Service 3 -->
                 <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden transition">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-smile text-6xl text-primary"></i>
+                    <div class="h-40 md:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-smile text-4xl md:text-6xl text-primary"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">Cosmetic Dentistry</h3>
-                        <p class="mb-4">Enhance your smile with teeth whitening, veneers, bonding, and smile makeovers.</p>
-                        <a href="/cosmetic-dentistry.html" class="text-primary font-semibold hover:text-secondary flex items-center">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-3">Cosmetic Dentistry</h3>
+                        <p class="mb-4 text-sm md:text-base">Enhance your smile with teeth whitening, veneers, bonding, and smile makeovers.</p>
+                        <a href="/cosmetic-dentistry.html" class="text-primary font-semibold hover:text-secondary flex items-center text-sm md:text-base">
                             Learn More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -325,13 +299,13 @@
                 
                 <!-- Service 4 -->
                 <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden transition">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-child text-6xl text-primary"></i>
+                    <div class="h-40 md:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-child text-4xl md:text-6xl text-primary"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">Pediatric Dentistry</h3>
-                        <p class="mb-4">Specialized dental care for children to ensure their oral health and create positive dental experiences.</p>
-                        <a href="/pediatric-dentistry.html" class="text-primary font-semibold hover:text-secondary flex items-center">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-3">Pediatric Dentistry</h3>
+                        <p class="mb-4 text-sm md:text-base">Specialized dental care for children to ensure their oral health and create positive dental experiences.</p>
+                        <a href="/pediatric-dentistry.html" class="text-primary font-semibold hover:text-secondary flex items-center text-sm md:text-base">
                             Learn More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -339,13 +313,13 @@
                 
                 <!-- Service 5 -->
                 <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden transition">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-x-ray text-6xl text-primary"></i>
+                    <div class="h-40 md:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-x-ray text-4xl md:text-6xl text-primary"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">Dental Implants</h3>
-                        <p class="mb-4">Replace missing teeth with permanent, natural-looking dental implants for restored function and aesthetics.</p>
-                        <a href="/dental-implants.html" class="text-primary font-semibold hover:text-secondary flex items-center">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-3">Dental Implants</h3>
+                        <p class="mb-4 text-sm md:text-base">Replace missing teeth with permanent, natural-looking dental implants for restored function and aesthetics.</p>
+                        <a href="/dental-implants.html" class="text-primary font-semibold hover:text-secondary flex items-center text-sm md:text-base">
                             Learn More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -353,13 +327,13 @@
                 
                 <!-- Service 6 -->
                 <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden transition">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-file-medical text-6xl text-primary"></i>
+                    <div class="h-40 md:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-file-medical text-4xl md:text-6xl text-primary"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">Emergency Care</h3>
-                        <p class="mb-4">Immediate treatment for dental emergencies including toothaches, broken teeth, and oral injuries.</p>
-                        <a href="emergency-care.html" class="text-primary font-semibold hover:text-secondary flex items-center">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-3">Emergency Care</h3>
+                        <p class="mb-4 text-sm md:text-base">Immediate treatment for dental emergencies including toothaches, broken teeth, and oral injuries.</p>
+                        <a href="emergency-care.html" class="text-primary font-semibold hover:text-secondary flex items-center text-sm md:text-base">
                             Learn More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -369,103 +343,103 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-lightBlue">
+    <section id="testimonials" class="py-16 md:py-20 bg-lightBlue">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Patient Testimonials</h2>
                 <div class="w-20 h-1 bg-secondary mx-auto"></div>
-                <p class="mt-6 text-lg max-w-2xl mx-auto">Hear what our patients have to say about their experience at Afya Mile Dental Clinic</p>
+                <p class="mt-6 text-base md:text-lg max-w-2xl mx-auto">Hear what our patients have to say about their experience at Afya Mile Dental Clinic</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-white rounded-xl shadow-lg p-6">
+                <div class="testimonial-card bg-white rounded-xl shadow-lg p-4 md:p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">MJ</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Mary Johnson</h4>
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold text-sm">MJ</div>
+                        <div class="ml-3 md:ml-4">
+                            <h4 class="font-bold text-sm md:text-base">Mary Johnson</h4>
                             <div class="flex text-accent">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
                             </div>
                         </div>
                     </div>
-                    <p class="italic">"The team at Afya Mile Dental Clinic is amazing! They made me feel comfortable throughout my entire root canal treatment. Highly recommend!"</p>
+                    <p class="italic text-sm md:text-base">"The team at Afya Mile Dental Clinic is amazing! They made me feel comfortable throughout my entire root canal treatment. Highly recommend!"</p>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-white rounded-xl shadow-lg p-6">
+                <div class="testimonial-card bg-white rounded-xl shadow-lg p-4 md:p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">PK</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Peter Kimani</h4>
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold text-sm">PK</div>
+                        <div class="ml-3 md:ml-4">
+                            <h4 class="font-bold text-sm md:text-base">Peter Kimani</h4>
                             <div class="flex text-accent">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star-half-alt text-sm"></i>
                             </div>
                         </div>
                     </div>
-                    <p class="italic">"I've been coming to Afya Mile for my family's dental care for over 3 years. Professional, clean, and the staff is incredibly friendly. Great value for money!"</p>
+                    <p class="italic text-sm md:text-base">"I've been coming to Afya Mile for my family's dental care for over 3 years. Professional, clean, and the staff is incredibly friendly. Great value for money!"</p>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-white rounded-xl shadow-lg p-6">
+                <div class="testimonial-card bg-white rounded-xl shadow-lg p-4 md:p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">AS</div>
-                        <div class="ml-4">
-                            <h4 class="font-bold">Amina Salim</h4>
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold text-sm">AS</div>
+                        <div class="ml-3 md:ml-4">
+                            <h4 class="font-bold text-sm md:text-base">Amina Salim</h4>
                             <div class="flex text-accent">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-sm"></i>
                             </div>
                         </div>
                     </div>
-                    <p class="italic">"The pediatric dentist here is wonderful with children. My kids actually enjoy their dental visits! The environment is so welcoming and child-friendly."</p>
+                    <p class="italic text-sm md:text-base">"The pediatric dentist here is wonderful with children. My kids actually enjoy their dental visits! The environment is so welcoming and child-friendly."</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Appointment Section -->
-    <section id="appointment" class="py-20">
+    <section id="appointment" class="py-16 md:py-20">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12">
+                <div class="text-center mb-8 md:mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Book an Appointment</h2>
                     <div class="w-20 h-1 bg-secondary mx-auto"></div>
-                    <p class="mt-6 text-lg">Schedule your visit with our experienced dental professionals</p>
+                    <p class="mt-6 text-base md:text-lg">Schedule your visit with our experienced dental professionals</p>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-xl p-8 appointment-form">
+                <div class="bg-white rounded-xl shadow-xl p-4 md:p-8 appointment-form">
                     <form>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
                             <div>
-                                <label class="block text-gray-700 mb-2" for="name">Full Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your name">
+                                <label class="block text-gray-700 mb-2 text-sm md:text-base" for="name">Full Name</label>
+                                <input type="text" id="name" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base" placeholder="Enter your name">
                             </div>
                             <div>
-                                <label class="block text-gray-700 mb-2" for="phone">Phone Number</label>
-                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your phone number">
+                                <label class="block text-gray-700 mb-2 text-sm md:text-base" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base" placeholder="Enter your phone number">
                             </div>
                         </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
                             <div>
-                                <label class="block text-gray-700 mb-2" for="email">Email Address</label>
-                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your email">
+                                <label class="block text-gray-700 mb-2 text-sm md:text-base" for="email">Email Address</label>
+                                <input type="email" id="email" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base" placeholder="Enter your email">
                             </div>
                             <div>
-                                <label class="block text-gray-700 mb-2" for="service">Service Required</label>
-                                <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <label class="block text-gray-700 mb-2 text-sm md:text-base" for="service">Service Required</label>
+                                <select id="service" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base">
                                     <option value="">Select a service</option>
                                     <option value="general">General Dentistry</option>
                                     <option value="orthodontics">Orthodontics</option>
@@ -477,20 +451,20 @@
                             </div>
                         </div>
                         
-                        <div class="mb-6">
-                            <label class="block text-gray-700 mb-2" for="date">Preferred Date & Time</label>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input type="date" id="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                                <input type="time" id="time" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                        <div class="mb-4 md:mb-6">
+                            <label class="block text-gray-700 mb-2 text-sm md:text-base" for="date">Preferred Date & Time</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                <input type="date" id="date" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base">
+                                <input type="time" id="time" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base">
                             </div>
                         </div>
                         
-                        <div class="mb-8">
-                            <label class="block text-gray-700 mb-2" for="message">Additional Information</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Any special requests or questions?"></textarea>
+                        <div class="mb-6 md:mb-8">
+                            <label class="block text-gray-700 mb-2 text-sm md:text-base" for="message">Additional Information</label>
+                            <textarea id="message" rows="4" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base" placeholder="Any special requests or questions?"></textarea>
                         </div>
                         
-                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg font-bold text-lg hover:bg-secondary transition">Book Appointment</button>
+                        <button type="submit" class="w-full bg-primary text-white py-3 md:py-4 rounded-lg font-bold text-base md:text-lg hover:bg-secondary transition">Book Appointment</button>
                     </form>
                 </div>
             </div>
@@ -498,62 +472,62 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-20 bg-lightBlue">
+    <section class="py-16 md:py-20 bg-lightBlue">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Frequently Asked Questions</h2>
                 <div class="w-20 h-1 bg-secondary mx-auto"></div>
-                <p class="mt-6 text-lg max-w-2xl mx-auto">Find answers to common questions about our services and policies</p>
+                <p class="mt-6 text-base md:text-lg max-w-2xl mx-auto">Find answers to common questions about our services and policies</p>
             </div>
             
             <div class="max-w-3xl mx-auto">
                 <div class="faq-item bg-white rounded-lg shadow mb-4">
-                    <button class="w-full text-left p-6 flex justify-between items-center">
-                        <span class="text-lg font-semibold">What should I bring to my first appointment?</span>
-                        <i class="fas fa-chevron-down text-secondary"></i>
+                    <button class="w-full text-left p-4 md:p-6 flex justify-between items-center">
+                        <span class="text-base md:text-lg font-semibold pr-4">What should I bring to my first appointment?</span>
+                        <i class="fas fa-chevron-down text-secondary flex-shrink-0"></i>
                     </button>
-                    <div class="px-6 pb-6 hidden">
-                        <p>Please bring a valid ID, your insurance card (if applicable), and a list of any medications you're currently taking. If you have previous dental records, bringing them can be helpful.</p>
+                    <div class="px-4 md:px-6 pb-4 md:pb-6 hidden">
+                        <p class="text-sm md:text-base">Please bring a valid ID, your insurance card (if applicable), and a list of any medications you're currently taking. If you have previous dental records, bringing them can be helpful.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item bg-white rounded-lg shadow mb-4">
-                    <button class="w-full text-left p-6 flex justify-between items-center">
-                        <span class="text-lg font-semibold">Do you accept dental insurance?</span>
-                        <i class="fas fa-chevron-down text-secondary"></i>
+                    <button class="w-full text-left p-4 md:p-6 flex justify-between items-center">
+                        <span class="text-base md:text-lg font-semibold pr-4">Do you accept dental insurance?</span>
+                        <i class="fas fa-chevron-down text-secondary flex-shrink-0"></i>
                     </button>
-                    <div class="px-6 pb-6 hidden">
-                        <p>Yes, we accept NHIF and most private insurance providers including Jubilee, AAR, Madison, Minet, MTN, and CIC. Please contact us to verify coverage for your specific plan.</p>
+                    <div class="px-4 md:px-6 pb-4 md:pb-6 hidden">
+                        <p class="text-sm md:text-base">Yes, we accept NHIF and most private insurance providers including Jubilee, AAR, Madison, Minet, MTN, and CIC. Please contact us to verify coverage for your specific plan.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item bg-white rounded-lg shadow mb-4">
-                    <button class="w-full text-left p-6 flex justify-between items-center">
-                        <span class="text-lg font-semibold">How often should I visit the dentist?</span>
-                        <i class="fas fa-chevron-down text-secondary"></i>
+                    <button class="w-full text-left p-4 md:p-6 flex justify-between items-center">
+                        <span class="text-base md:text-lg font-semibold pr-4">How often should I visit the dentist?</span>
+                        <i class="fas fa-chevron-down text-secondary flex-shrink-0"></i>
                     </button>
-                    <div class="px-6 pb-6 hidden">
-                        <p>We recommend regular check-ups every six months. However, depending on your oral health, we may suggest more or less frequent visits.</p>
+                    <div class="px-4 md:px-6 pb-4 md:pb-6 hidden">
+                        <p class="text-sm md:text-base">We recommend regular check-ups every six months. However, depending on your oral health, we may suggest more or less frequent visits.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item bg-white rounded-lg shadow mb-4">
-                    <button class="w-full text-left p-6 flex justify-between items-center">
-                        <span class="text-lg font-semibold">What payment methods do you accept?</span>
-                        <i class="fas fa-chevron-down text-secondary"></i>
+                    <button class="w-full text-left p-4 md:p-6 flex justify-between items-center">
+                        <span class="text-base md:text-lg font-semibold pr-4">What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down text-secondary flex-shrink-0"></i>
                     </button>
-                    <div class="px-6 pb-6 hidden">
-                        <p>We accept cash, major credit cards, mobile money (M-Pesa, Airtel Money), and direct insurance billing for eligible patients.</p>
+                    <div class="px-4 md:px-6 pb-4 md:pb-6 hidden">
+                        <p class="text-sm md:text-base">We accept cash, major credit cards, mobile money (M-Pesa, Airtel Money), and direct insurance billing for eligible patients.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item bg-white rounded-lg shadow">
-                    <button class="w-full text-left p-6 flex justify-between items-center">
-                        <span class="text-lg font-semibold">Do you offer emergency dental care?</span>
-                        <i class="fas fa-chevron-down text-secondary"></i>
+                    <button class="w-full text-left p-4 md:p-6 flex justify-between items-center">
+                        <span class="text-base md:text-lg font-semibold pr-4">Do you offer emergency dental care?</span>
+                        <i class="fas fa-chevron-down text-secondary flex-shrink-0"></i>
                     </button>
-                    <div class="px-6 pb-6 hidden">
-                        <p>Yes, we offer emergency dental care for urgent issues. Please call our office immediately if you're experiencing severe pain or trauma. We reserve time in our schedule for emergency patients.</p>
+                    <div class="px-4 md:px-6 pb-4 md:pb-6 hidden">
+                        <p class="text-sm md:text-base">Yes, we offer emergency dental care for urgent issues. Please call our office immediately if you're experiencing severe pain or trauma. We reserve time in our schedule for emergency patients.</p>
                     </div>
                 </div>
             </div>
@@ -561,210 +535,214 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20">
+    <section id="contact" class="py-16 md:py-20">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Contact Us</h2>
                 <div class="w-20 h-1 bg-secondary mx-auto"></div>
-                <p class="mt-6 text-lg max-w-2xl mx-auto">We're here to help with any questions or to schedule your appointment</p>
+                <p class="mt-6 text-base md:text-lg max-w-2xl mx-auto">We're here to help with any questions or to schedule your appointment</p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 <div>
-                    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-                        <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-6 md:mb-8">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6">Get in Touch</h3>
                         
-                        <div class="space-y-6">
+                        <div class="space-y-4 md:space-y-6">
                             <div class="flex items-start">
-                                <div class="bg-primary text-white p-3 rounded-full mr-4">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                <div class="bg-primary text-white p-2 md:p-3 rounded-full mr-3 md:mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-sm md:text-base"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-lg">Our Location</h4>
-                                    <p>Standard St, Nairobi, Kenya</p>
+                                    <h4 class="font-bold text-base md:text-lg">Our Location</h4>
+                                    <p class="text-sm md:text-base">Standard St, Nairobi, Kenya</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="bg-primary text-white p-3 rounded-full mr-4">
-                                    <i class="fas fa-phone-alt"></i>
+                                <div class="bg-primary text-white p-2 md:p-3 rounded-full mr-3 md:mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-sm md:text-base"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-lg">Phone Number</h4>
-                                    <p>+254 720 400 391</p>
+                                    <h4 class="font-bold text-base md:text-lg">Phone Number</h4>
+                                    <p class="text-sm md:text-base">+254 720 400 391</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="bg-primary text-white p-3 rounded-full mr-4">
-                                    <i class="fas fa-envelope"></i>
+                                <div class="bg-primary text-white p-2 md:p-3 rounded-full mr-3 md:mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-sm md:text-base"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-lg">Email Address</h4>
-                                    <p>info@afyamiledental.co.ke</p>
+                                    <h4 class="font-bold text-base md:text-lg">Email Address</h4>
+                                    <p class="text-sm md:text-base break-all">info@afyamiledental.co.ke</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="bg-primary text-white p-3 rounded-full mr-4">
-                                    <i class="fas fa-clock"></i>
+                                <div class="bg-primary text-white p-2 md:p-3 rounded-full mr-3 md:mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock text-sm md:text-base"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-lg">Opening Hours</h4>
-                                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                                    <p>Saturday: 9:00 AM - 2:00 PM</p>
-                                    <p>Sunday: Closed</p>
+                                    <h4 class="font-bold text-base md:text-lg">Opening Hours</h4>
+                                    <p class="text-sm md:text-base">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                                    <p class="text-sm md:text-base">Saturday: 9:00 AM - 2:00 PM</p>
+                                    <p class="text-sm md:text-base">Sunday: Closed</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6">Follow Us</h3>
-                        <div class="flex space-x-4">
-                            <a href="#" class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary transition">
-                                <i class="fab fa-facebook-f"></i>
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6">Follow Us</h3>
+                        <div class="flex space-x-3 md:space-x-4">
+                            <a href="#" class="bg-primary text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-secondary transition">
+                                <i class="fab fa-facebook-f text-sm md:text-base"></i>
                             </a>
-                            <a href="#" class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary transition">
-                                <i class="fab fa-instagram"></i>
+                            <a href="#" class="bg-primary text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-secondary transition">
+                                <i class="fab fa-instagram text-sm md:text-base"></i>
                             </a>
-                            <a href="#" class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary transition">
-                                <i class="fab fa-twitter"></i>
+                            <a href="#" class="bg-primary text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-secondary transition">
+                                <i class="fab fa-twitter text-sm md:text-base"></i>
                             </a>
-                            <a href="#" class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary transition">
-                                <i class="fab fa-youtube"></i>
+                            <a href="#" class="bg-primary text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center hover:bg-secondary transition">
+                                <i class="fab fa-youtube text-sm md:text-base"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 
                 <div>
-                    <div class="bg-white rounded-xl shadow-lg p-8 h-full">
-                        <h3 class="text-2xl font-bold mb-6">Send us a Message</h3>
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 h-full">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6">Send us a Message</h3>
                         <form class="h-full flex flex-col">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="grid grid-cols-1 gap-4 md:gap-6 mb-4 md:mb-6">
                                 <div>
-                                    <label class="block text-gray-700 mb-2" for="contact-name">Full Name</label>
-                                    <input type="text" id="contact-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your name">
+                                    <label class="block text-gray-700 mb-2 text-sm md:text-base" for="contact-name">Full Name</label>
+                                    <input type="text" id="contact-name" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base" placeholder="Enter your name">
                                 </div>
                                 <div>
-                                    <label class="block text-gray-700 mb-2" for="contact-email">Email Address</label>
-                                    <input type="email" id="contact-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your email">
+                                    <label class="block text-gray-700 mb-2 text-sm md:text-base" for="contact-email">Email Address</label>
+                                    <input type="email" id="contact-email" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base" placeholder="Enter your email">
                                 </div>
                             </div>
                             
-                            <div class="mb-6">
-                                <label class="block text-gray-700 mb-2" for="contact-phone">Phone Number</label>
-                                <input type="tel" id="contact-phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your phone number">
+                            <div class="mb-4 md:mb-6">
+                                <label class="block text-gray-700 mb-2 text-sm md:text-base" for="contact-phone">Phone Number</label>
+                                <input type="tel" id="contact-phone" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base" placeholder="Enter your phone number">
                             </div>
                             
                             <div class="mb-6 flex-grow">
-                                <label class="block text-gray-700 mb-2" for="contact-message">Your Message</label>
-                                <textarea id="contact-message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="How can we help you?"></textarea>
+                                <label class="block text-gray-700 mb-2 text-sm md:text-base" for="contact-message">Your Message</label>
+                                <textarea id="contact-message" rows="4" class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base" placeholder="How can we help you?"></textarea>
                             </div>
                             
-                            <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg font-bold hover:bg-secondary transition">Send Message</button>
+                            <button type="submit" class="w-full bg-primary text-white py-3 md:py-4 rounded-lg font-bold hover:bg-secondary transition text-sm md:text-base">Send Message</button>
                         </form>
                     </div>
                 </div>
             </div>
             
-            <div class="mt-12 rounded-xl overflow-hidden shadow-lg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63820.08110400329!2d36.78191499999999!3d-1.2820439999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d58974178f%3A0x93c0a126384b6b0!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1651234567890!5m2!1sen!2ske" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="mt-8 md:mt-12 rounded-xl overflow-hidden shadow-lg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63820.08110400329!2d36.78191499999999!3d-1.2820439999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d58974178f%3A0x93c0a126384b6b0!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1651234567890!5m2!1sen!2ske" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" class="md:h-96"></iframe>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <footer class="bg-gray-900 text-white pt-12 md:pt-16 pb-6 md:pb-8">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
                 <div>
-                    <div class="flex items-center mb-6">
-                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto object-contain">
-                        <h3 class="ml-3 text-xl font-bold">Afya Mile Dental</h3>
+                    <div class="flex items-center mb-4 md:mb-6">
+                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-8 md:h-10 w-auto object-contain">
+                        <h3 class="ml-3 text-lg md:text-xl font-bold">Afya Mile Dental</h3>
                     </div>
-                    <p class="mb-6">Providing exceptional dental care with compassion and professionalism since 2010.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white">
+                    <p class="mb-4 md:mb-6 text-sm md:text-base">Providing exceptional dental care with compassion and professionalism since 2010.</p>
+                    <div class="flex space-x-3 md:space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm md:text-base">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm md:text-base">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm md:text-base">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm md:text-base">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
-                        <li><a href="#insurance" class="text-gray-400 hover:text-white transition">Insurance</a></li>
-                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    <h4 class="text-base md:text-lg font-bold mb-4 md:mb-6">Quick Links</h4>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition text-sm md:text-base">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition text-sm md:text-base">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition text-sm md:text-base">Services</a></li>
+                        <li><a href="#insurance" class="text-gray-400 hover:text-white transition text-sm md:text-base">Insurance</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition text-sm md:text-base">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition text-sm md:text-base">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-6">Our Services</h4>
-                    <ul class="space-y-3">
-                        <li><a href="/general-dentistry.html" class="text-gray-400 hover:text-white transition">General Dentistry</a></li>
-                        <li><a href="/orthodontics.html" class="text-gray-400 hover:text-white transition">Orthodontics</a></li>
-                        <li><a href="/cosmetic-dentistry.html" class="text-gray-400 hover:text-white transition">Cosmetic Dentistry</a></li>
-                        <li><a href="/pediatric-dentistry.html" class="text-gray-400 hover:text-white transition">Pediatric Dentistry</a></li>
-                        <li><a href="/dental-implants.html" class="text-gray-400 hover:text-white transition">Dental Implants</a></li>
-                        <li><a href="/emergency-care.html" class="text-gray-400 hover:text-white transition">Emergency Care</a></li>
+                    <h4 class="text-base md:text-lg font-bold mb-4 md:mb-6">Our Services</h4>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="/general-dentistry.html" class="text-gray-400 hover:text-white transition text-sm md:text-base">General Dentistry</a></li>
+                        <li><a href="/orthodontics.html" class="text-gray-400 hover:text-white transition text-sm md:text-base">Orthodontics</a></li>
+                        <li><a href="/cosmetic-dentistry.html" class="text-gray-400 hover:text-white transition text-sm md:text-base">Cosmetic Dentistry</a></li>
+                        <li><a href="/pediatric-dentistry.html" class="text-gray-400 hover:text-white transition text-sm md:text-base">Pediatric Dentistry</a></li>
+                        <li><a href="/dental-implants.html" class="text-gray-400 hover:text-white transition text-sm md:text-base">Dental Implants</a></li>
+                        <li><a href="/emergency-care.html" class="text-gray-400 hover:text-white transition text-sm md:text-base">Emergency Care</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-6">Newsletter</h4>
-                    <p class="mb-4">Subscribe to our newsletter for dental tips and clinic updates.</p>
+                    <h4 class="text-base md:text-lg font-bold mb-4 md:mb-6">Newsletter</h4>
+                    <p class="mb-4 text-sm md:text-base">Subscribe to our newsletter for dental tips and clinic updates.</p>
                     <form class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
-                        <button class="bg-primary px-4 rounded-r-lg hover:bg-secondary transition">
-                            <i class="fas fa-paper-plane"></i>
+                        <input type="email" placeholder="Your email" class="px-3 md:px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800 text-sm md:text-base">
+                        <button class="bg-primary px-3 md:px-4 rounded-r-lg hover:bg-secondary transition">
+                            <i class="fas fa-paper-plane text-sm md:text-base"></i>
                         </button>
                     </form>
                 </div>
             </div>
             
-            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
+            <div class="pt-6 md:pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p class="text-sm md:text-base">&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Dark Mode Toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
         
-        // Check for saved theme preference or respect OS preference
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        const currentTheme = localStorage.getItem('theme');
-        
-        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
-            body.classList.add('dark-mode');
-        }
-        
-        darkModeToggle.addEventListener('click', function() {
-            body.classList.toggle('dark-mode');
-            
-            // Save theme preference
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             } else {
-                localStorage.setItem('theme', 'light');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
             }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
         });
         
         // FAQ Accordion
@@ -796,7 +774,7 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     window.scrollTo({
-                        top: target.offsetTop - 80,
+                        top: target.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
