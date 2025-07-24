@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmetic Dentistry | Afya Mile Dental Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#28a745',
+                        lightBlue: '#e9f7ff',
+                        accent: '#ffc107'
+                    },
+                    fontFamily: {
+                        'opensans': ['Open Sans', 'sans-serif'],
+                        'lato': ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; }
+        .dark-mode { background-color: #1a202c; color: #f7fafc; }
+        .dark-mode .bg-white { background-color: #2d3748; color: #f7fafc; }
+        .dark-mode .text-gray-700 { color: #f7fafc; }
+        .dark-mode .bg-gray-100 { background-color: #4a5568; }
+        .dark-mode .border-gray-200 { border-color: #4a5568; }
+        .dark-mode .text-gray-900 { color: #f7fafc; }
+        .dark-mode .bg-lightBlue { background-color: #2d3748; }
+        .dark-mode header { background-color: #2d3748; }
+        .dark-mode footer { background-color: #1a202c; }
+    </style>
+</head>
+<body class="bg-white text-gray-700">
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto object-contain">
+                <h1 class="ml-3 text-2xl font-bold text-primary">Dental Clinic</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-secondary transition">Home</a>
+                <a href="index.html#about" class="hover:text-secondary transition">About</a>
+                <a href="index.html#services" class="text-primary font-semibold hover:text-secondary transition">Services</a>
+                <a href="index.html#contact" class="hover:text-secondary transition">Contact</a>
+            </nav>
+            <div class="flex items-center">
+                <a href="index.html#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mr-4">Book Appointment</a>
+                <button id="darkModeToggle" class="text-gray-600 hover:text-primary"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-16 bg-lightBlue">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Cosmetic Dentistry</h1>
+            <div class="w-20 h-1 bg-secondary mx-auto mb-6"></div>
+            <p class="text-lg max-w-2xl mx-auto">Enhance your smile with our advanced cosmetic dental treatments</p>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-primary mb-6">Your Dream Smile Awaits</h2>
+                    <p class="mb-6">Cosmetic dentistry focuses on improving the appearance of your teeth, gums, and overall smile. Our advanced techniques and materials can transform your smile and boost your confidence.</p>
+                </div>
+                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-smile text-8xl text-primary"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-lightBlue">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Cosmetic Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-magic text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Teeth Whitening</h3>
+                    <p>Professional whitening treatments to brighten your smile by several shades.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-layer-group text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Porcelain Veneers</h3>
+                    <p>Ultra-thin shells that cover the front of teeth to correct imperfections.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-puzzle-piece text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Dental Bonding</h3>
+                    <p>Tooth-colored resin to repair chips, cracks, and gaps in teeth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready for Your Smile Makeover?</h2>
+            <p class="text-xl mb-8">Transform your smile with our cosmetic dentistry services.</p>
+            <a href="index.html#appointment" class="bg-accent text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-secondary hover:text-white transition">Book Consultation</a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto object-contain">
+                        <h3 class="ml-3 text-xl font-bold">Afya Mile Dental</h3>
+                    </div>
+                    <p class="mb-6">Providing exceptional dental care since 2010.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="general-dentistry.html" class="text-gray-400 hover:text-white transition">General Dentistry</a></li>
+                        <li><a href="orthodontics.html" class="text-gray-400 hover:text-white transition">Orthodontics</a></li>
+                        <li><a href="cosmetic-dentistry.html" class="text-gray-400 hover:text-white transition">Cosmetic Dentistry</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact</h4>
+                    <p class="text-gray-400">+254 720 400 391</p>
+                    <p class="text-gray-400">info@afyamiledental.co.ke</p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') body.classList.add('dark-mode');
+        darkModeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

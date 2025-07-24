@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Dentistry | Afya Mile Dental Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#28a745',
+                        lightBlue: '#e9f7ff',
+                        accent: '#ffc107'
+                    },
+                    fontFamily: {
+                        'opensans': ['Open Sans', 'sans-serif'],
+                        'lato': ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; }
+        .dark-mode { background-color: #1a202c; color: #f7fafc; }
+        .dark-mode .bg-white { background-color: #2d3748; color: #f7fafc; }
+        .dark-mode .text-gray-700 { color: #f7fafc; }
+        .dark-mode .bg-lightBlue { background-color: #2d3748; }
+        .dark-mode header { background-color: #2d3748; }
+        .dark-mode footer { background-color: #1a202c; }
+    </style>
+</head>
+<body class="bg-white text-gray-700">
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto object-contain">
+                <h1 class="ml-3 text-2xl font-bold text-primary">Dental Clinic</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-secondary transition">Home</a>
+                <a href="index.html#services" class="text-primary font-semibold hover:text-secondary transition">Services</a>
+                <a href="index.html#contact" class="hover:text-secondary transition">Contact</a>
+            </nav>
+            <div class="flex items-center">
+                <a href="index.html#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mr-4">Book Appointment</a>
+                <button id="darkModeToggle" class="text-gray-600 hover:text-primary"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-16 bg-lightBlue">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Pediatric Dentistry</h1>
+            <div class="w-20 h-1 bg-secondary mx-auto mb-6"></div>
+            <p class="text-lg max-w-2xl mx-auto">Specialized dental care for children in a fun, friendly environment</p>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-primary mb-6">Making Dental Visits Fun for Kids</h2>
+                    <p class="mb-6">Our pediatric dental team specializes in providing gentle, compassionate care for children from infancy through their teenage years. We create positive dental experiences that set the foundation for a lifetime of good oral health.</p>
+                </div>
+                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-child text-8xl text-primary"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-lightBlue">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Children's Dental Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-baby text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">First Dental Visit</h3>
+                    <p>Gentle introduction to dental care for babies and toddlers.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-shield-alt text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Preventive Care</h3>
+                    <p>Cleanings, fluoride treatments, and sealants to prevent cavities.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-graduation-cap text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Oral Health Education</h3>
+                    <p>Teaching children proper brushing and flossing techniques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Schedule Your Child's Visit</h2>
+            <p class="text-xl mb-8">Give your child the gift of healthy teeth and a beautiful smile.</p>
+            <a href="index.html#appointment" class="bg-accent text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-secondary hover:text-white transition">Book Appointment</a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-6">
+                    <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto object-contain">
+                    <h3 class="ml-3 text-xl font-bold">Afya Mile Dental</h3>
+                </div>
+                <p>&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') body.classList.add('dark-mode');
+        darkModeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

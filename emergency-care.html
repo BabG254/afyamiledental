@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Care | Afya Mile Dental Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#28a745',
+                        lightBlue: '#e9f7ff',
+                        accent: '#ffc107'
+                    },
+                    fontFamily: {
+                        'opensans': ['Open Sans', 'sans-serif'],
+                        'lato': ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Open Sans', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; }
+        .dark-mode { background-color: #1a202c; color: #f7fafc; }
+        .dark-mode .bg-white { background-color: #2d3748; color: #f7fafc; }
+        .dark-mode .text-gray-700 { color: #f7fafc; }
+        .dark-mode .bg-lightBlue { background-color: #2d3748; }
+        .dark-mode header { background-color: #2d3748; }
+        .dark-mode footer { background-color: #1a202c; }
+    </style>
+</head>
+<body class="bg-white text-gray-700">
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto object-contain">
+                <h1 class="ml-3 text-2xl font-bold text-primary">Dental Clinic</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-secondary transition">Home</a>
+                <a href="index.html#services" class="text-primary font-semibold hover:text-secondary transition">Services</a>
+                <a href="index.html#contact" class="hover:text-secondary transition">Contact</a>
+            </nav>
+            <div class="flex items-center">
+                <a href="index.html#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mr-4">Book Appointment</a>
+                <button id="darkModeToggle" class="text-gray-600 hover:text-primary"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-16 bg-red-100">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-red-600 mb-4">Emergency Dental Care</h1>
+            <div class="w-20 h-1 bg-red-500 mx-auto mb-6"></div>
+            <p class="text-lg max-w-2xl mx-auto">Immediate dental care when you need it most</p>
+            <div class="mt-8 bg-red-500 text-white p-4 rounded-lg inline-block">
+                <h3 class="text-xl font-bold">Emergency Hotline: +254 720 400 391</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-primary mb-6">When Dental Emergencies Strike</h2>
+                    <p class="mb-6">Dental emergencies can happen at any time and often require immediate attention to relieve pain, prevent infection, and save teeth. Our emergency dental services are designed to provide quick, effective treatment when you need it most.</p>
+                </div>
+                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-ambulance text-8xl text-red-500"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-lightBlue">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Common Dental Emergencies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Severe Toothache</h3>
+                    <p>Intense tooth pain that interferes with daily activities.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-broken-tooth text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Broken/Chipped Tooth</h3>
+                    <p>Cracked, fractured, or completely broken teeth from trauma.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-tooth text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Knocked-Out Tooth</h3>
+                    <p>Tooth completely displaced from its socket due to injury.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-face-frown text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Dental Abscess</h3>
+                    <p>Serious infection around the tooth root or gums.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-band-aid text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Lost Filling/Crown</h3>
+                    <p>Dental restoration that has fallen out or broken.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-cut text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Soft Tissue Injury</h3>
+                    <p>Cuts or injuries to lips, cheeks, tongue, or gums.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Emergency First Aid Tips</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-blue-600">For Toothache:</h3>
+                    <ul class="space-y-2">
+                        <li>• Rinse mouth with warm salt water</li>
+                        <li>• Use dental floss to remove trapped food</li>
+                        <li>• Apply cold compress to outside of cheek</li>
+                        <li>• Take over-the-counter pain medication</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-green-600">For Knocked-Out Tooth:</h3>
+                    <ul class="space-y-2">
+                        <li>• Handle tooth by crown, not root</li>
+                        <li>• Rinse gently with water if dirty</li>
+                        <li>• Try to reinsert in socket</li>
+                        <li>• Keep moist in milk or saliva</li>
+                        <li>• See dentist within 30 minutes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-red-500 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Need Emergency Dental Care?</h2>
+            <p class="text-xl mb-8">Don't wait - call us immediately for urgent dental problems.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+254720400391" class="bg-white text-red-500 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition">Call Emergency Line</a>
+                <a href="index.html#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-red-500 transition">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-6">
+                    <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto object-contain">
+                    <h3 class="ml-3 text-xl font-bold">Afya Mile Dental</h3>
+                </div>
+                <p>&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') body.classList.add('dark-mode');
+        darkModeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orthodontics | Afya Mile Dental Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#28a745',
+                        lightBlue: '#e9f7ff',
+                        accent: '#ffc107'
+                    },
+                    fontFamily: {
+                        'opensans': ['Open Sans', 'sans-serif'],
+                        'lato': ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .dark-mode {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #2d3748;
+            color: #f7fafc;
+        }
+        
+        .dark-mode .text-gray-700 {
+            color: #f7fafc;
+        }
+        
+        .dark-mode .bg-gray-100 {
+            background-color: #4a5568;
+        }
+        
+        .dark-mode .border-gray-200 {
+            border-color: #4a5568;
+        }
+        
+        .dark-mode .text-gray-900 {
+            color: #f7fafc;
+        }
+        
+        .dark-mode .bg-lightBlue {
+            background-color: #2d3748;
+        }
+        
+        .dark-mode header {
+            background-color: #2d3748;
+        }
+        
+        .dark-mode footer {
+            background-color: #1a202c;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-700">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="/logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto object-contain">
+                <h1 class="ml-3 text-2xl font-bold text-primary">Dental Clinic</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-secondary transition">Home</a>
+                <a href="index.html#about" class="hover:text-secondary transition">About</a>
+                <a href="index.html#services" class="text-primary font-semibold hover:text-secondary transition">Services</a>
+                <a href="index.html#insurance" class="hover:text-secondary transition">Insurance</a>
+                <a href="index.html#testimonials" class="hover:text-secondary transition">Testimonials</a>
+                <a href="index.html#contact" class="hover:text-secondary transition">Contact</a>
+            </nav>
+            
+            <div class="flex items-center">
+                <a href="index.html#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mr-4">
+                    Book Appointment
+                </a>
+                <button id="darkModeToggle" class="text-gray-600 hover:text-primary">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="md:hidden ml-4 text-gray-600">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-16 bg-lightBlue">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Orthodontics</h1>
+                <div class="w-20 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-lg max-w-2xl mx-auto">Straighten your teeth and improve your bite with our advanced orthodontic treatments</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-primary mb-6">Transform Your Smile</h2>
+                    <p class="mb-6">Orthodontics is a specialized branch of dentistry that corrects teeth and jaws that are positioned improperly. Crooked teeth and teeth that do not fit together correctly are harder to keep clean and may be lost early due to tooth decay and periodontal disease.</p>
+                    <p class="mb-6">Our orthodontic treatments not only improve the appearance of your smile but also enhance your oral health and overall quality of life.</p>
+                </div>
+                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-teeth text-8xl text-primary"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Options -->
+    <section class="py-20 bg-lightBlue">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Orthodontic Treatment Options</h2>
+                <div class="w-20 h-1 bg-secondary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <i class="fas fa-grip-lines-vertical text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Traditional Metal Braces</h3>
+                    <p class="mb-4">The most common and effective type of braces, featuring high-grade stainless steel brackets and wires.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Most affordable option</li>
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Highly effective for complex cases</li>
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Customizable with colored bands</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <i class="fas fa-eye-slash text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Clear Aligners</h3>
+                    <p class="mb-4">Nearly invisible, removable aligners custom-made for your teeth using advanced 3D technology.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Virtually invisible</li>
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Removable for eating and cleaning</li>
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>No dietary restrictions</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <i class="fas fa-gem text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Ceramic Braces</h3>
+                    <p class="mb-4">Tooth-colored brackets that blend with your natural teeth for a more aesthetic appearance.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Less visible than metal braces</li>
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Effective treatment results</li>
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Durable and reliable</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <i class="fas fa-child text-4xl text-secondary mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Early Treatment</h3>
+                    <p class="mb-4">Interceptive orthodontic treatment for children to guide proper jaw and tooth development.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Prevents more severe problems</li>
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Shorter treatment time later</li>
+                        <li class="flex items-start"><i class="fas fa-check text-secondary mt-1 mr-2"></i>Improved facial development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Benefits of Orthodontic Treatment</h2>
+                <div class="w-20 h-1 bg-secondary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <i class="fas fa-smile-beam text-5xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Improved Appearance</h3>
+                    <p>Straight teeth create a beautiful, confident smile that enhances your overall appearance.</p>
+                </div>
+                
+                <div class="text-center">
+                    <i class="fas fa-heart text-5xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Better Oral Health</h3>
+                    <p>Properly aligned teeth are easier to clean, reducing the risk of decay and gum disease.</p>
+                </div>
+                
+                <div class="text-center">
+                    <i class="fas fa-utensils text-5xl text-secondary mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Improved Function</h3>
+                    <p>Correct bite alignment improves chewing efficiency and reduces jaw strain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Orthodontic Journey?</h2>
+            <p class="text-xl mb-8">Schedule a consultation to discover the best orthodontic treatment option for you.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="index.html#appointment" class="bg-accent text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-secondary hover:text-white transition">Book Consultation</a>
+                <a href="index.html#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-primary transition">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto object-contain">
+                        <h3 class="ml-3 text-xl font-bold">Afya Mile Dental</h3>
+                    </div>
+                    <p class="mb-6">Providing exceptional dental care with compassion and professionalism since 2010.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="general-dentistry.html" class="text-gray-400 hover:text-white transition">General Dentistry</a></li>
+                        <li><a href="orthodontics.html" class="text-gray-400 hover:text-white transition">Orthodontics</a></li>
+                        <li><a href="cosmetic-dentistry.html" class="text-gray-400 hover:text-white transition">Cosmetic Dentistry</a></li>
+                        <li><a href="pediatric-dentistry.html" class="text-gray-400 hover:text-white transition">Pediatric Dentistry</a></li>
+                        <li><a href="dental-implants.html" class="text-gray-400 hover:text-white transition">Dental Implants</a></li>
+                        <li><a href="emergency-care.html" class="text-gray-400 hover:text-white transition">Emergency Care</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Info</h4>
+                    <div class="space-y-3">
+                        <p class="text-gray-400">Standard St, Nairobi, Kenya</p>
+                        <p class="text-gray-400">+254 720 400 391</p>
+                        <p class="text-gray-400">info@afyamiledental.co.ke</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            body.classList.add('dark-mode');
+        }
+        
+        darkModeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
