@@ -977,13 +977,15 @@
             });
         });
         
-        // Page loading animation - optimized for faster display
+        // Page loading animation - optimized for display
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 200);
+            setTimeout(function() {
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 200);
+            }, 1500); // Set to 1.5 seconds (1500 milliseconds)
         });
         
         // Scroll progress indicator

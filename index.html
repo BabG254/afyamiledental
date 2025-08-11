@@ -1376,14 +1376,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Right Content - Responsive and Mobile Optimized -->
-                            <!-- Hidden on Mobile, Visible on Desktop -->
-                            <div class="hidden lg:block relative" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
-                                <!-- Main Image with Mobile-Friendly Loading -->
-                                <img src="https://images.unsplash.com/photo-1545233483-0ce11be4b1f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Happy Dental Patient" 
-                                    class="relative z-10 rounded-2xl shadow-2xl mx-auto border-8 border-white/20 w-full max-w-md"
-                                    loading="lazy">
-                                
+                            <!-- Right Content - Responsive and Mobile Optimized -->     
                                 <!-- Decorative Elements -->
                                 <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-accent/30 blur-xl"></div>
                                 <div class="absolute -bottom-8 -left-8 w-24 h-24 rounded-full bg-primary/30 blur-xl"></div>
@@ -2239,14 +2232,16 @@
             });
         });
         
-        // Faster Loading Screen
+        // Loading Screen
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
-            // Immediate removal for faster perceived loading
-            loader.classList.add('loader-hidden');
+            // Display loader for 1.5 seconds
             setTimeout(() => {
-                loader.style.display = 'none';
-            }, 300); // Reduced from 1000ms
+                loader.classList.add('loader-hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 300);
+            }, 1500); // Set to 1.5 seconds (1500 milliseconds)
         });
         
         // Optimized Scroll Progress Indicator
