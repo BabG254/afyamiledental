@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dental Implants | Afya Mile Dental Clinic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -18,116 +19,886 @@
                         accent: '#ffc107'
                     },
                     fontFamily: {
-                        'opensans': ['Open Sans', 'sans-serif'],
-                        'lato': ['Lato', 'sans-serif']
-                    }
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out 1s infinite',
+                        'float-slow': 'float 10s ease-in-out 2s infinite',
+                        'pulse-ring': 'pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scroll-down': 'scrollDown 2s ease infinite',
+                    },
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Open Sans', sans-serif; scroll-behavior: smooth; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; }
-        .dark-mode { background-color: #1a202c; color: #f7fafc; }
-        .dark-mode .bg-white { background-color: #2d3748; color: #f7fafc; }
-        .dark-mode .text-gray-700 { color: #f7fafc; }
-        .dark-mode .bg-lightBlue { background-color: #2d3748; }
-        .dark-mode header { background-color: #2d3748; }
-        .dark-mode footer { background-color: #1a202c; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Glass Effect Header */
+        .glass-header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.5s;
+        }
+        
+        .scrolled .glass-header {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* Section Transitions */
+        .section-transition {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-transition::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom right, transparent 49%, currentColor 50%);
+            color: inherit;
+            opacity: 0.05;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        @keyframes scrollDown {
+            0% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            70% {
+                transform: scale(2);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes whatsappPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Loader - optimized for faster loading */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.2s, visibility 0.2s;
+        }
+        
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #007bff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Scroll Progress Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #007bff, #28a745);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.2s ease-out;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+        
+        .pulse-ring {
+            position: relative;
+        }
+        
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background-color: currentColor;
+            opacity: 0.4;
+            animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-700">
-    <header class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto object-contain">
-                <h1 class="ml-3 text-2xl font-bold text-primary">Dental Clinic</h1>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator"></div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254707092373" target="_blank" class="fixed bottom-8 left-8 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110 pulse-ring">
+        <span class="absolute inset-0 w-full h-full bg-green-500 rounded-full animate-pulse-ring opacity-40"></span>
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="bg-green-600 text-white text-xs absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center rounded-full">1</span>
+    </a>
+    
+    <!-- Modern Premium Header -->
+    <header class="fixed w-full z-50 header-wrapper" id="header">
+        <div class="glass-header shadow-sm transition-all duration-500">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <!-- Logo Area with Enhanced Animation -->
+                <div class="flex items-center" data-aos="fade-right">
+                    <div class="logo-container relative overflow-hidden">
+                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-14 w-auto object-contain animate-float shadow-lg rounded-full p-1 bg-white/90">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 animate-pulse"></div>
+                    </div>
+                    <div class="ml-3 flex flex-col">
+                        <h1 class="text-2xl font-bold text-primary leading-tight">Afya Mile Dental</h1>
+                        <span class="text-xs text-secondary font-medium tracking-wider">Your Smile, Our Priority</span>
+                    </div>
+                </div>
+                
+                <!-- Top Info Bar (Desktop) -->
+                <div class="hidden lg:flex absolute top-0 right-0 bg-primary/90 text-white px-6 py-1 rounded-bl-2xl shadow-md">
+                    <div class="flex items-center text-sm mr-6">
+                        <i class="fas fa-phone-alt mr-2 text-accent animate-pulse"></i>
+                        <a href="tel:+254707092373" class="hover:text-accent transition-colors">+254 707 092 373</a>
+                    </div>
+                    <div class="flex items-center text-sm mr-6">
+                        <i class="fas fa-map-marker-alt mr-2 text-accent"></i>
+                        <span>Standard Street, CBD Nairobi</span>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <i class="fas fa-clock mr-2 text-accent"></i>
+                        <span>Mon-Fri: 8AM-6PM | Sat: 9AM-2PM</span>
+                    </div>
+                </div>
+                
+                <!-- Primary Navigation (WordPress-style) -->
+                <nav class="hidden md:flex items-center">
+                    <ul class="flex space-x-1">
+                        <li class="group relative">
+                            <a href="index.html" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Home</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#about" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">About</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative dropdown-wrapper">
+                            <a href="index.html#services" class="block py-2 px-3 text-primary font-semibold hover:text-secondary transition-all duration-300 hover:scale-105 flex items-center">
+                                <span class="relative z-10">Services</span>
+                                <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                            <div class="dropdown-menu absolute left-0 mt-1 w-64 bg-white shadow-xl rounded-lg py-2 transform opacity-0 -translate-y-3 pointer-events-none transition-all duration-300 z-50">
+                                <a href="general-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">General Dentistry</a>
+                                <a href="cosmetic-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Cosmetic Dentistry</a>
+                                <a href="orthodontics.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Orthodontics</a>
+                                <a href="pediatric-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Pediatric Dentistry</a>
+                                <a href="dental-implants.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all font-semibold">Dental Implants</a>
+                                <a href="emergency-care.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Emergency Care</a>
+                            </div>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#insurance" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Insurance</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#testimonials" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Testimonials</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#contact" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Contact</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- CTA and Mobile Toggle -->
+                <div class="flex items-center">
+                    <a href="index.html#appointment" class="btn-primary bg-primary text-white px-5 py-3 rounded-lg hover:bg-secondary transition-all duration-300 relative overflow-hidden shadow-lg group hidden md:flex">
+                        <span class="relative z-10 font-semibold tracking-wide flex items-center">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            <span>Book Appointment</span>
+                        </span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                    </a>
+                    <button id="mobileMenuToggle" class="md:hidden ml-4 text-gray-600 hover:text-primary transition-all duration-300 bg-gray-100 p-2 rounded-lg">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
-            <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="hover:text-secondary transition">Home</a>
-                <a href="index.html#services" class="text-primary font-semibold hover:text-secondary transition">Services</a>
-                <a href="index.html#contact" class="hover:text-secondary transition">Contact</a>
-            </nav>
-            <div class="flex items-center">
-                <a href="index.html#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mr-4">Book Appointment</a>
-                <button id="darkModeToggle" class="text-gray-600 hover:text-primary"><i class="fas fa-moon"></i></button>
+        </div>
+        
+        <!-- Modern Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden mobile-menu border-t border-gray-200 bg-white/95 backdrop-blur-lg shadow-lg">
+            <div class="container mx-auto px-4 py-4">
+                <!-- Mobile Quick Info -->
+                <div class="flex flex-col space-y-2 mb-6 border-b border-gray-200 pb-4">
+                    <a href="tel:+254707092373" class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-phone text-primary"></i>
+                        </span>
+                        +254 707 092 373
+                    </a>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                        </span>
+                        Standard Street, CBD Nairobi
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-clock text-primary"></i>
+                        </span>
+                        Mon-Fri: 8AM-6PM | Sat: 9AM-2PM
+                    </div>
+                </div>
+                
+                <!-- Mobile Navigation Links -->
+                <nav class="flex flex-col">
+                    <a href="index.html" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Home</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#about" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>About</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#services" class="group flex items-center justify-between text-primary font-semibold hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Services</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="general-dentistry.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>General Dentistry</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="cosmetic-dentistry.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>Cosmetic Dentistry</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="orthodontics.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>Orthodontics</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="pediatric-dentistry.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>Pediatric Dentistry</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="dental-implants.html" class="group flex items-center justify-between text-primary font-semibold hover:text-secondary transition py-2 px-6 border-b border-gray-100 bg-gray-50">
+                        <span>Dental Implants</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="emergency-care.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>Emergency Care</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#insurance" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Insurance</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#testimonials" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Testimonials</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#contact" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Contact</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#appointment" class="btn-primary bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg transition text-center mt-6 shadow-lg">
+                        <i class="fas fa-calendar-check mr-2"></i> Book Appointment
+                    </a>
+                </nav>
+                
+                <!-- Social Media Icons -->
+                <div class="flex justify-center space-x-4 mt-6 pt-4 border-t border-gray-200">
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="pt-32 pb-16 bg-lightBlue">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">Dental Implants</h1>
-            <div class="w-20 h-1 bg-secondary mx-auto mb-6"></div>
-            <p class="text-lg max-w-2xl mx-auto">Permanent, natural-looking tooth replacement solutions</p>
+    <!-- Mobile Nav Spacer - Ensures content appears below fixed header on mobile -->
+    <div class="h-16 md:h-0"></div>
+    
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-blue-50 to-cyan-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight mb-6">
+                        Dental <span class="text-primary">Implants</span>
+                    </h1>
+                    <div class="w-24 h-1.5 bg-secondary mx-auto lg:mx-0 mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 mb-8">
+                        Permanent, natural-looking tooth replacement solutions that restore both function and beauty to your smile.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="index.html#appointment" class="px-6 py-3 bg-primary text-white rounded-full hover:bg-secondary transition-colors duration-300 shadow-md flex items-center">
+                            <i class="fas fa-calendar-check mr-2"></i> Schedule Consultation
+                        </a>
+                        <a href="#implant-solutions" class="px-6 py-3 bg-white text-primary border border-primary rounded-full hover:bg-gray-50 transition-colors duration-300 shadow-md flex items-center">
+                            <i class="fas fa-arrow-right mr-2"></i> Explore Solutions
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 relative" data-aos="fade-left">
+                    <div class="relative z-10 animate-float">
+                        <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                            alt="Dental implant restoration" class="rounded-xl shadow-2xl mx-auto" width="500" height="400">
+                        <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-secondary rounded-full flex items-center justify-center text-white p-6 shadow-lg">
+                            <span class="font-bold text-sm text-center">Lifetime Solution</span>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-md max-h-80 rounded-full bg-primary opacity-10 filter blur-3xl -z-10"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="py-20">
+    <!-- About Dental Implants Section -->
+    <section class="py-20" id="about-implants">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1" data-aos="fade-right">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 relative">
+                        Restore Your <span class="text-primary">Smile</span> with Dental Implants
+                        <span class="absolute -bottom-2 left-0 w-20 h-1 bg-secondary"></span>
+                    </h2>
+                    <p class="mb-6 text-gray-600">
+                        Dental implants are the gold standard for replacing missing teeth. They provide a permanent, stable 
+                        foundation for crowns, bridges, or dentures that look, feel, and function like natural teeth.
+                    </p>
+                    <p class="mb-6 text-gray-600">
+                        Unlike other tooth replacement options, dental implants replace both the visible part of the tooth 
+                        and the root, preventing bone loss and preserving your facial structure for years to come.
+                    </p>
+                    <div class="flex items-center space-x-6 flex-wrap">
+                        <div class="flex items-center mt-4">
+                            <div class="mr-3 text-secondary">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Permanent Solution</h4>
+                                <p class="text-sm text-gray-600">Can last a lifetime with proper care</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-4">
+                            <div class="mr-3 text-secondary">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Natural Function</h4>
+                                <p class="text-sm text-gray-600">Eat, speak, and smile with confidence</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-4">
+                            <div class="mr-3 text-secondary">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Bone Preservation</h4>
+                                <p class="text-sm text-gray-600">Prevents jawbone deterioration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative order-1 lg:order-2" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                        alt="Dental implant procedure" class="rounded-lg shadow-xl w-full object-cover" style="height: 450px;">
+                    <div class="absolute -bottom-8 -right-8 bg-white p-4 rounded-lg shadow-lg">
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-primary mb-1">98%</div>
+                            <p class="text-xs text-gray-500">Success Rate</p>
+                        </div>
+                    </div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-secondary rounded-full opacity-20"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Implants Work Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
+                <span class="text-secondary font-medium">The Process</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 mb-6">How Dental Implants Work</h2>
+                <p class="text-gray-600">Understanding the dental implant procedure can help you make informed decisions about your oral health.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-primary"></div>
+                    <div class="rounded-full bg-primary w-16 h-16 flex items-center justify-center text-white mb-6">
+                        <span class="text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Consultation & Planning</h3>
+                    <p class="text-gray-600 mb-4">
+                        Our dental team will evaluate your oral health, take 3D scans, and create a personalized treatment plan 
+                        for optimal implant placement.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span>1 appointment</span>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-secondary"></div>
+                    <div class="rounded-full bg-secondary w-16 h-16 flex items-center justify-center text-white mb-6">
+                        <span class="text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Implant Placement</h3>
+                    <p class="text-gray-600 mb-4">
+                        The titanium implant post is surgically placed into the jawbone where it will fuse with the bone 
+                        through a process called osseointegration.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span>1-2 hours procedure</span>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-primary"></div>
+                    <div class="rounded-full bg-primary w-16 h-16 flex items-center justify-center text-white mb-6">
+                        <span class="text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Crown Placement</h3>
+                    <p class="text-gray-600 mb-4">
+                        After healing (typically 3-6 months), we attach a custom-made crown that matches your natural teeth 
+                        in color, shape, and function.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span>30-60 minute procedure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implant Solutions Section -->
+    <section class="py-20 bg-white" id="implant-solutions">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
+                <span class="text-secondary font-medium">Our Solutions</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 mb-6">Comprehensive Implant Solutions</h2>
+                <p class="text-gray-600">We offer a variety of dental implant options tailored to your unique needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
+                <!-- Solution 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588776814546-daab8f378fc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                            alt="Single Tooth Implant" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Single Tooth Implant</h3>
+                            <span class="bg-blue-100 text-primary text-xs py-1 px-2 rounded-full">Most Common</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Replace individual missing teeth with natural-looking implants that function just like your own teeth.</p>
+                        <ul class="space-y-2 text-gray-600 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>No damage to adjacent teeth</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Prevents bone loss</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Natural appearance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Solution 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1626736903554-89215e2a1687?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                            alt="Implant-Supported Bridge" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Implant Bridge</h3>
+                            <span class="bg-green-100 text-green-600 text-xs py-1 px-2 rounded-full">Multiple Teeth</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Replace multiple adjacent missing teeth with implant-supported bridges for a seamless smile.</p>
+                        <ul class="space-y-2 text-gray-600 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Fewer implants than individual replacements</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Preserves jawbone integrity</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Stable and secure</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Solution 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                            alt="All-on-4 Implants" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">All-on-4 Implants</h3>
+                            <span class="bg-purple-100 text-purple-600 text-xs py-1 px-2 rounded-full">Full Arch</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Full arch restoration using just four strategically placed implants for a complete smile makeover.</p>
+                        <ul class="space-y-2 text-gray-600 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Entire arch with just 4 implants</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Reduced treatment time</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-secondary mr-2"></i>
+                                <span>Fixed, non-removable teeth</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
+                <span class="text-secondary font-medium">Why Choose Implants</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 mb-6">Benefits of Dental Implants</h2>
+                <p class="text-gray-600">Dental implants offer numerous advantages over other tooth replacement options.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Benefit 1 -->
+                <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-primary">
+                        <i class="fas fa-teeth text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Natural Look & Feel</h3>
+                    <p class="text-gray-600">Implants look, feel, and function just like your natural teeth, providing a seamless smile.</p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4 text-green-600">
+                        <i class="fas fa-bone text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Bone Preservation</h3>
+                    <p class="text-gray-600">Implants stimulate bone growth and prevent the bone loss that occurs with missing teeth.</p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-4 text-yellow-600">
+                        <i class="fas fa-hamburger text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Improved Eating</h3>
+                    <p class="text-gray-600">Enjoy your favorite foods without worry. Implants restore nearly 100% of your chewing ability.</p>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-4 text-red-600">
+                        <i class="fas fa-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Long-lasting</h3>
+                    <p class="text-gray-600">With proper care, dental implants can last a lifetime, making them a permanent solution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-blue-700 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-full h-full">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute bottom-0 opacity-10">
+                <path fill="#ffffff" fill-opacity="1" d="M0,32L48,69.3C96,107,192,181,288,224C384,267,480,277,576,261.3C672,245,768,203,864,197.3C960,192,1056,224,1152,224C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Restore Your Smile?</h2>
+                <p class="text-xl mb-8">Get back to eating, speaking, and smiling with confidence using our advanced dental implant solutions.</p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="index.html#appointment" class="px-8 py-4 bg-white text-primary hover:bg-gray-100 transition-colors duration-300 rounded-full shadow-md font-bold text-lg">
+                        Schedule Your Consultation
+                    </a>
+                    <a href="index.html#contact" class="px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-colors duration-300 rounded-full font-bold text-lg">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div>
-                    <h2 class="text-3xl font-bold text-primary mb-6">Restore Your Smile with Dental Implants</h2>
-                    <p class="mb-6">Dental implants are the gold standard for replacing missing teeth. They provide a permanent, stable foundation for crowns, bridges, or dentures that look, feel, and function like natural teeth.</p>
+                    <div class="flex items-center mb-6">
+                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto">
+                        <div class="ml-3">
+                            <h3 class="font-montserrat font-bold text-xl text-white">Afya Mile</h3>
+                            <p class="text-sm text-gray-400">Dental Clinic</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">Providing exceptional dental care with a gentle touch since 2010. Your smile is our priority.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-teeth-open text-8xl text-primary"></i>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 relative">
+                        Quick Links
+                        <span class="absolute -bottom-2 left-0 w-12 h-0.5 bg-secondary"></span>
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-secondary"></i> Home</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-secondary"></i> About Us</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-secondary"></i> Services</a></li>
+                        <li><a href="index.html#doctors" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-secondary"></i> Our Doctors</a></li>
+                        <li><a href="index.html#testimonials" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-secondary"></i> Testimonials</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-secondary"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 relative">
+                        Our Services
+                        <span class="absolute -bottom-2 left-0 w-12 h-0.5 bg-secondary"></span>
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="general-dentistry.html" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-tooth text-xs mr-2 text-secondary"></i> General Dentistry</a></li>
+                        <li><a href="orthodontics.html" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-tooth text-xs mr-2 text-secondary"></i> Orthodontics</a></li>
+                        <li><a href="cosmetic-dentistry.html" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-tooth text-xs mr-2 text-secondary"></i> Cosmetic Dentistry</a></li>
+                        <li><a href="dental-implants.html" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-tooth text-xs mr-2 text-secondary"></i> Dental Implants</a></li>
+                        <li><a href="pediatric-dentistry.html" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-tooth text-xs mr-2 text-secondary"></i> Pediatric Dentistry</a></li>
+                        <li><a href="emergency-care.html" class="text-gray-400 hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-tooth text-xs mr-2 text-secondary"></i> Emergency Care</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6 relative">
+                        Contact Us
+                        <span class="absolute -bottom-2 left-0 w-12 h-0.5 bg-secondary"></span>
+                    </h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="text-secondary mt-1 mr-3"><i class="fas fa-map-marker-alt"></i></div>
+                            <span class="text-gray-400">123 Dental Street, Nairobi, Kenya</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="text-secondary mt-1 mr-3"><i class="fas fa-phone-alt"></i></div>
+                            <span class="text-gray-400">+254 720 400 391</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="text-secondary mt-1 mr-3"><i class="fas fa-envelope"></i></div>
+                            <span class="text-gray-400">info@afyamiledental.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="text-secondary mt-1 mr-3"><i class="fas fa-clock"></i></div>
+                            <div class="text-gray-400">
+                                <p class="mb-1">Mon-Fri: 8:00AM - 6:00PM</p>
+                                <p>Sat: 9:00AM - 4:00PM</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-lightBlue">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Implant Solutions</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-tooth text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Single Tooth Implant</h3>
-                    <p>Replace individual missing teeth with natural-looking implants.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-grip-horizontal text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Implant Bridge</h3>
-                    <p>Replace multiple adjacent missing teeth with implant-supported bridges.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-smile-beam text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">All-on-4 Implants</h3>
-                    <p>Full arch restoration using just four strategically placed implants.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-primary text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Restore Your Confidence</h2>
-            <p class="text-xl mb-8">Get back to eating, speaking, and smiling with confidence.</p>
-            <a href="index.html#appointment" class="bg-accent text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-secondary hover:text-white transition">Schedule Consultation</a>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="text-center">
-                <div class="flex items-center justify-center mb-6">
-                    <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto object-contain">
-                    <h3 class="ml-3 text-xl font-bold">Afya Mile Dental</h3>
-                </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
                 <p>&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Main Scripts -->
     <script>
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark') body.classList.add('dark-mode');
-        darkModeToggle.addEventListener('click', function() {
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Loader
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.loader');
+            setTimeout(function() {
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 200);
+            }, 500);
+        });
+        
+        // Scroll Progress Indicator
+        window.addEventListener('scroll', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (windowScroll / height) * 100;
+            scrollIndicator.style.width = scrolled + '%';
+            
+            // Header Scrolled Class
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Show/hide mobile menu
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Dropdown menu behavior
+        const dropdowns = document.querySelectorAll('.dropdown-wrapper');
+        
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', () => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                menu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                menu.classList.remove('opacity-0', '-translate-y-3', 'pointer-events-none');
+            });
+            
+            dropdown.addEventListener('mouseleave', () => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                menu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                menu.classList.add('opacity-0', '-translate-y-3', 'pointer-events-none');
+            });
         });
     </script>
 </body>

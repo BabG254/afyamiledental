@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency Care | Afya Mile Dental Clinic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -15,167 +16,932 @@
                         primary: '#007bff',
                         secondary: '#28a745',
                         lightBlue: '#e9f7ff',
-                        accent: '#ffc107'
+                        accent: '#ffc107',
+                        emergency: '#dc3545'
                     },
                     fontFamily: {
-                        'opensans': ['Open Sans', 'sans-serif'],
-                        'lato': ['Lato', 'sans-serif']
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out 1s infinite',
+                        'float-slow': 'float 10s ease-in-out 2s infinite',
+                        'pulse-ring': 'pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scroll-down': 'scrollDown 2s ease infinite',
+                        'whatsapp-pulse': 'whatsappPulse 2s ease-out infinite',
+                        'emergency-pulse': 'emergencyPulse 1.5s ease-out infinite'
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Open Sans', sans-serif; scroll-behavior: smooth; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; }
-        .dark-mode { background-color: #1a202c; color: #f7fafc; }
-        .dark-mode .bg-white { background-color: #2d3748; color: #f7fafc; }
-        .dark-mode .text-gray-700 { color: #f7fafc; }
-        .dark-mode .bg-lightBlue { background-color: #2d3748; }
-        .dark-mode header { background-color: #2d3748; }
-        .dark-mode footer { background-color: #1a202c; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Glass Effect Header */
+        .glass-header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.5s;
+        }
+        
+        .scrolled .glass-header {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* Section Transitions */
+        .section-transition {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-transition::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom right, transparent 49%, currentColor 50%);
+            color: inherit;
+            opacity: 0.05;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        @keyframes scrollDown {
+            0% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            70% {
+                transform: scale(2);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes whatsappPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        @keyframes emergencyPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(220, 53, 69, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+            }
+        }
+        
+        /* Loader - optimized for faster loading */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.2s, visibility 0.2s;
+        }
+        
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #007bff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Scroll Progress Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #007bff, #28a745);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.2s ease-out;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+        
+        .pulse-ring {
+            position: relative;
+        }
+        
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background-color: currentColor;
+            opacity: 0.4;
+            animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-700">
-    <header class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto object-contain">
-                <h1 class="ml-3 text-2xl font-bold text-primary">Dental Clinic</h1>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator"></div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254707092373" target="_blank" class="fixed bottom-8 left-8 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110 pulse-ring">
+        <span class="absolute inset-0 w-full h-full bg-green-500 rounded-full animate-pulse-ring opacity-40"></span>
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="bg-green-600 text-white text-xs absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center rounded-full">1</span>
+    </a>
+    
+    <!-- Emergency Call Button -->
+    <a href="tel:+254707092373" class="fixed bottom-6 left-6 z-50 bg-emergency w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-red-700 transition-all duration-300 animate-emergency-pulse lg:hidden" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-phone-alt text-2xl text-white"></i>
+    </a>
+    
+    <!-- Modern Premium Header -->
+    <header class="fixed w-full z-50 header-wrapper" id="header">
+        <div class="glass-header shadow-sm transition-all duration-500">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <!-- Logo Area with Enhanced Animation -->
+                <div class="flex items-center" data-aos="fade-right">
+                    <div class="logo-container relative overflow-hidden">
+                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-14 w-auto object-contain animate-float shadow-lg rounded-full p-1 bg-white/90">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 animate-pulse"></div>
+                    </div>
+                    <div class="ml-3 flex flex-col">
+                        <h1 class="text-2xl font-bold text-primary leading-tight">Afya Mile Dental</h1>
+                        <span class="text-xs text-secondary font-medium tracking-wider">Your Smile, Our Priority</span>
+                    </div>
+                </div>
+                
+                <!-- Top Info Bar (Desktop) -->
+                <div class="hidden lg:flex absolute top-0 right-0 bg-primary/90 text-white px-6 py-1 rounded-bl-2xl shadow-md">
+                    <div class="flex items-center text-sm mr-6">
+                        <i class="fas fa-phone-alt mr-2 text-accent animate-pulse"></i>
+                        <a href="tel:+254707092373" class="hover:text-accent transition-colors">+254 707 092 373</a>
+                    </div>
+                    <div class="flex items-center text-sm mr-6">
+                        <i class="fas fa-map-marker-alt mr-2 text-accent"></i>
+                        <span>Standard Street, CBD Nairobi</span>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <i class="fas fa-clock mr-2 text-accent"></i>
+                        <span>Mon-Fri: 8AM-6PM | Sat: 9AM-2PM</span>
+                    </div>
+                </div>
+                
+                <!-- Primary Navigation (WordPress-style) -->
+                <nav class="hidden md:flex items-center">
+                    <ul class="flex space-x-1">
+                        <li class="group relative">
+                            <a href="index.html" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Home</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#about" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">About</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative dropdown-wrapper">
+                            <a href="index.html#services" class="block py-2 px-3 text-primary font-semibold hover:text-secondary transition-all duration-300 hover:scale-105 flex items-center">
+                                <span class="relative z-10">Services</span>
+                                <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                            <div class="dropdown-menu absolute left-0 mt-1 w-64 bg-white shadow-xl rounded-lg py-2 transform opacity-0 -translate-y-3 pointer-events-none transition-all duration-300 z-50">
+                                <a href="general-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">General Dentistry</a>
+                                <a href="cosmetic-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Cosmetic Dentistry</a>
+                                <a href="orthodontics.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Orthodontics</a>
+                                <a href="pediatric-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Pediatric Dentistry</a>
+                                <a href="dental-implants.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Dental Implants</a>
+                                <a href="emergency-care.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all font-semibold">Emergency Care</a>
+                            </div>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#insurance" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Insurance</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#testimonials" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Testimonials</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#contact" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Contact</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- CTA and Mobile Toggle -->
+                <div class="flex items-center">
+                    <a href="index.html#appointment" class="btn-primary bg-primary text-white px-5 py-3 rounded-lg hover:bg-secondary transition-all duration-300 relative overflow-hidden shadow-lg group hidden md:flex">
+                        <span class="relative z-10 font-semibold tracking-wide flex items-center">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            <span>Book Appointment</span>
+                        </span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                    </a>
+                    <button id="mobileMenuToggle" class="md:hidden ml-4 text-gray-600 hover:text-primary transition-all duration-300 bg-gray-100 p-2 rounded-lg">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
-            <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="hover:text-secondary transition">Home</a>
-                <a href="index.html#services" class="text-primary font-semibold hover:text-secondary transition">Services</a>
-                <a href="index.html#contact" class="hover:text-secondary transition">Contact</a>
-            </nav>
-            <div class="flex items-center">
-                <a href="index.html#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mr-4">Book Appointment</a>
-                <button id="darkModeToggle" class="text-gray-600 hover:text-primary"><i class="fas fa-moon"></i></button>
+        </div>
+        
+        <!-- Modern Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden mobile-menu border-t border-gray-200 bg-white/95 backdrop-blur-lg shadow-lg">
+            <div class="container mx-auto px-4 py-4">
+                <!-- Mobile Quick Info -->
+                <div class="flex flex-col space-y-2 mb-6 border-b border-gray-200 pb-4">
+                    <a href="tel:+254707092373" class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-phone text-primary"></i>
+                        </span>
+                        +254 707 092 373
+                    </a>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                        </span>
+                        Standard Street, CBD Nairobi
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-clock text-primary"></i>
+                        </span>
+                        Mon-Fri: 8AM-6PM | Sat: 9AM-2PM
+                    </div>
+                </div>
+                
+                <!-- Mobile Navigation Links -->
+                <nav class="flex flex-col">
+                    <a href="index.html" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Home</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#about" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>About</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#services" class="group flex items-center justify-between text-primary font-semibold hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Services</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="general-dentistry.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>General Dentistry</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="cosmetic-dentistry.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>Cosmetic Dentistry</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="orthodontics.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>Orthodontics</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="pediatric-dentistry.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>Pediatric Dentistry</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="dental-implants.html" class="group flex items-center justify-between hover:text-secondary transition py-2 px-6 border-b border-gray-100">
+                        <span>Dental Implants</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="emergency-care.html" class="group flex items-center justify-between text-emergency font-semibold hover:text-secondary transition py-2 px-6 border-b border-gray-100 bg-gray-50">
+                        <span>Emergency Care</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#insurance" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Insurance</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#testimonials" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Testimonials</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#contact" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Contact</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#appointment" class="btn-primary bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg transition text-center mt-6 shadow-lg">
+                        <i class="fas fa-calendar-check mr-2"></i> Book Appointment
+                    </a>
+                </nav>
+                
+                <!-- Social Media Icons -->
+                <div class="flex justify-center space-x-4 mt-6 pt-4 border-t border-gray-200">
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="pt-32 pb-16 bg-red-100">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-red-600 mb-4">Emergency Dental Care</h1>
-            <div class="w-20 h-1 bg-red-500 mx-auto mb-6"></div>
-            <p class="text-lg max-w-2xl mx-auto">Immediate dental care when you need it most</p>
-            <div class="mt-8 bg-red-500 text-white p-4 rounded-lg inline-block">
-                <h3 class="text-xl font-bold">Emergency Hotline: +254 720 400 391</h3>
+    <!-- Mobile Nav Spacer - Ensures content appears below fixed header on mobile -->
+    <div class="h-16 md:h-0"></div>
+    
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-red-50 to-orange-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight mb-6">
+                        Emergency <span class="text-emergency">Dental Care</span>
+                    </h1>
+                    <div class="w-24 h-1.5 bg-emergency mx-auto lg:mx-0 mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 mb-8">
+                        Immediate dental care when you need it most. Our emergency dental services are designed to provide quick, effective relief 24/7.
+                    </p>
+                    <div class="bg-emergency text-white p-4 rounded-lg inline-flex items-center justify-center space-x-3 shadow-lg animate-emergency-pulse mb-6">
+                        <i class="fas fa-phone-alt text-2xl"></i>
+                        <span class="text-xl font-bold">Emergency Hotline: +254 707 092 373</span>
+                    </div>
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="tel:+254707092373" class="px-6 py-3 bg-emergency text-white rounded-full hover:bg-red-700 transition-colors duration-300 shadow-md flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i> Call Now
+                        </a>
+                        <a href="#emergency-tips" class="px-6 py-3 bg-white text-emergency border border-emergency rounded-full hover:bg-gray-50 transition-colors duration-300 shadow-md flex items-center">
+                            <i class="fas fa-first-aid mr-2"></i> First Aid Tips
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 relative" data-aos="fade-left">
+                    <div class="relative z-10 animate-float">
+                        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                            alt="Emergency dental care" class="rounded-xl shadow-2xl mx-auto" width="500" height="400">
+                        <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-emergency rounded-full flex items-center justify-center text-white p-6 shadow-lg">
+                            <span class="font-bold text-sm text-center">24/7 Service</span>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-md max-h-80 rounded-full bg-emergency opacity-10 filter blur-3xl -z-10"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20">
+    <!-- About Emergency Care Section -->
+    <section class="py-20" id="about-emergency">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-primary mb-6">When Dental Emergencies Strike</h2>
-                    <p class="mb-6">Dental emergencies can happen at any time and often require immediate attention to relieve pain, prevent infection, and save teeth. Our emergency dental services are designed to provide quick, effective treatment when you need it most.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1" data-aos="fade-right">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 relative">
+                        When Dental <span class="text-emergency">Emergencies</span> Strike
+                        <span class="absolute -bottom-2 left-0 w-20 h-1 bg-emergency"></span>
+                    </h2>
+                    <p class="mb-6 text-gray-600">
+                        Dental emergencies can happen at any time, causing severe pain and discomfort. At Afya Mile Dental, 
+                        we understand that dental pain can't wait, which is why we provide emergency dental services 
+                        24 hours a day, 7 days a week.
+                    </p>
+                    <p class="mb-6 text-gray-600">
+                        Our emergency team is equipped to handle all types of dental emergencies with promptness and precision, 
+                        ensuring you receive the care you need when you need it most. We prioritize emergency cases to 
+                        provide immediate pain relief and treatment.
+                    </p>
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex items-center">
+                            <div class="mr-3 text-emergency">
+                                <i class="fas fa-clock text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">24/7 Availability</h4>
+                                <p class="text-sm text-gray-600">Round-the-clock emergency dental services</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-3 text-emergency">
+                                <i class="fas fa-heartbeat text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Prompt Relief</h4>
+                                <p class="text-sm text-gray-600">Immediate attention to dental pain</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="mr-3 text-emergency">
+                                <i class="fas fa-user-md text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Expert Care</h4>
+                                <p class="text-sm text-gray-600">Experienced emergency dental professionals</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-ambulance text-8xl text-red-500"></i>
+                <div class="relative order-1 lg:order-2" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                        alt="Emergency dental treatment" class="rounded-lg shadow-xl w-full object-cover" style="height: 450px;">
+                    <div class="absolute -bottom-8 -right-8 bg-white p-4 rounded-lg shadow-lg">
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-primary mb-1"><30min</div>
+                            <p class="text-xs text-gray-500">Average Response Time</p>
+                        </div>
+                    </div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-emergency rounded-full opacity-20"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-lightBlue">
+    <!-- Common Emergencies Section -->
+    <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Common Dental Emergencies</h2>
+            <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
+                <span class="text-emergency font-medium">What We Treat</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 mb-6">Common Dental Emergencies</h2>
+                <p class="text-gray-600">We're equipped to handle all types of dental emergencies with promptness and precision.</p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Severe Toothache</h3>
-                    <p>Intense tooth pain that interferes with daily activities.</p>
+                <!-- Emergency 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-emergency"></div>
+                    <div class="rounded-full bg-red-100 w-16 h-16 flex items-center justify-center text-emergency mb-6">
+                        <i class="fas fa-exclamation-circle text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Severe Toothache</h3>
+                    <p class="text-gray-600 mb-4">
+                        Intense tooth pain that interferes with eating, sleeping, or daily activities, 
+                        often indicating infection or damage requiring immediate attention.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-exclamation-triangle text-emergency mr-2"></i>
+                        <span>Seek immediate treatment</span>
+                    </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-broken-tooth text-4xl text-red-500 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Broken/Chipped Tooth</h3>
-                    <p>Cracked, fractured, or completely broken teeth from trauma.</p>
+                
+                <!-- Emergency 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-emergency"></div>
+                    <div class="rounded-full bg-red-100 w-16 h-16 flex items-center justify-center text-emergency mb-6">
+                        <i class="fas fa-tooth text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Knocked-Out Tooth</h3>
+                    <p class="text-gray-600 mb-4">
+                        A tooth that has been completely displaced from its socket due to trauma 
+                        or injury. Quick action can save the tooth.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-clock text-emergency mr-2"></i>
+                        <span>Critical first 30 minutes</span>
+                    </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-tooth text-4xl text-red-500 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Knocked-Out Tooth</h3>
-                    <p>Tooth completely displaced from its socket due to injury.</p>
+                
+                <!-- Emergency 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-emergency"></div>
+                    <div class="rounded-full bg-red-100 w-16 h-16 flex items-center justify-center text-emergency mb-6">
+                        <i class="fas fa-teeth text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Broken/Chipped Tooth</h3>
+                    <p class="text-gray-600 mb-4">
+                        Cracked, fractured, or broken teeth from trauma that may cause pain and 
+                        sensitivity. Can lead to infection if untreated.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-shield-alt text-emergency mr-2"></i>
+                        <span>Protect from further damage</span>
+                    </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-face-frown text-4xl text-red-500 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Dental Abscess</h3>
-                    <p>Serious infection around the tooth root or gums.</p>
+                
+                <!-- Emergency 4 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-emergency"></div>
+                    <div class="rounded-full bg-red-100 w-16 h-16 flex items-center justify-center text-emergency mb-6">
+                        <i class="fas fa-biohazard text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Dental Abscess</h3>
+                    <p class="text-gray-600 mb-4">
+                        A painful infection at the root of a tooth or between the gum and a tooth, 
+                        causing severe pain, facial swelling, and fever.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-exclamation-triangle text-emergency mr-2"></i>
+                        <span>Medical emergency</span>
+                    </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-band-aid text-4xl text-red-500 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Lost Filling/Crown</h3>
-                    <p>Dental restoration that has fallen out or broken.</p>
+                
+                <!-- Emergency 5 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-emergency"></div>
+                    <div class="rounded-full bg-red-100 w-16 h-16 flex items-center justify-center text-emergency mb-6">
+                        <i class="fas fa-crown text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Lost Filling/Crown</h3>
+                    <p class="text-gray-600 mb-4">
+                        Dental restorations that have fallen out or broken, leaving teeth vulnerable 
+                        to sensitivity, damage, and decay.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-tools text-emergency mr-2"></i>
+                        <span>Temporary protection needed</span>
+                    </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-cut text-4xl text-red-500 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Soft Tissue Injury</h3>
-                    <p>Cuts or injuries to lips, cheeks, tongue, or gums.</p>
+                
+                <!-- Emergency 6 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 left-0 h-1 w-full bg-emergency"></div>
+                    <div class="rounded-full bg-red-100 w-16 h-16 flex items-center justify-center text-emergency mb-6">
+                        <i class="fas fa-cut text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Soft Tissue Injury</h3>
+                    <p class="text-gray-600 mb-4">
+                        Cuts, lacerations, or puncture wounds to the lips, cheeks, tongue, or gums 
+                        that may require stitches and professional care.
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-first-aid text-emergency mr-2"></i>
+                        <span>Control bleeding first</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20">
+    <!-- Emergency First Aid Tips Section -->
+    <section class="py-20 bg-white" id="emergency-tips">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">Emergency First Aid Tips</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-blue-50 rounded-lg p-6">
-                    <h3 class="text-xl font-bold mb-4 text-blue-600">For Toothache:</h3>
-                    <ul class="space-y-2">
-                        <li>• Rinse mouth with warm salt water</li>
-                        <li>• Use dental floss to remove trapped food</li>
-                        <li>• Apply cold compress to outside of cheek</li>
-                        <li>• Take over-the-counter pain medication</li>
+            <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
+                <span class="text-secondary font-medium">What To Do</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 mb-6">Emergency First Aid Tips</h2>
+                <p class="text-gray-600">Follow these steps while seeking immediate professional dental care.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up">
+                <!-- First Aid 1 -->
+                <div class="bg-blue-50 rounded-xl p-8 border-l-4 border-primary shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-primary flex items-center">
+                        <i class="fas fa-exclamation-circle mr-3 text-2xl"></i> For Toothache:
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Rinse mouth with warm salt water</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Use dental floss to remove any trapped food</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Apply a cold compress to the outside of your cheek</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Take over-the-counter pain medication as directed</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                            <span>Don't place aspirin directly on the tooth or gum tissue</span>
+                        </li>
                     </ul>
                 </div>
-                <div class="bg-green-50 rounded-lg p-6">
-                    <h3 class="text-xl font-bold mb-4 text-green-600">For Knocked-Out Tooth:</h3>
-                    <ul class="space-y-2">
-                        <li>• Handle tooth by crown, not root</li>
-                        <li>• Rinse gently with water if dirty</li>
-                        <li>• Try to reinsert in socket</li>
-                        <li>• Keep moist in milk or saliva</li>
-                        <li>• See dentist within 30 minutes</li>
+                
+                <!-- First Aid 2 -->
+                <div class="bg-green-50 rounded-xl p-8 border-l-4 border-secondary shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-secondary flex items-center">
+                        <i class="fas fa-tooth mr-3 text-2xl"></i> For Knocked-Out Tooth:
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Handle the tooth by the crown (top), not the root</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Rinse gently with water if dirty, but don't scrub</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Try to reinsert it in the socket if possible</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>If not possible, keep tooth moist in milk or saliva</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-exclamation-triangle text-yellow-500 mr-3"></i>
+                            <span>See a dentist within 30 minutes for best chance of saving the tooth</span>
+                        </li>
                     </ul>
+                </div>
+                
+                <!-- First Aid 3 -->
+                <div class="bg-red-50 rounded-xl p-8 border-l-4 border-emergency shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-emergency flex items-center">
+                        <i class="fas fa-biohazard mr-3 text-2xl"></i> For Dental Abscess:
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Rinse mouth with mild salt water several times</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Take over-the-counter pain medication for discomfort</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Apply cold compress to face to minimize swelling</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-exclamation-triangle text-yellow-500 mr-3"></i>
+                            <span>Seek immediate dental care as infections can spread quickly</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                            <span>Don't delay treatment or attempt to drain the abscess yourself</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- First Aid 4 -->
+                <div class="bg-yellow-50 rounded-xl p-8 border-l-4 border-accent shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-accent flex items-center">
+                        <i class="fas fa-cut mr-3 text-2xl"></i> For Soft Tissue Injury:
+                    </h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Rinse wound gently with warm water</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Apply pressure with gauze or clean cloth to stop bleeding</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span>Apply cold compress to reduce swelling for 5-10 minutes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-exclamation-triangle text-yellow-500 mr-3"></i>
+                            <span>If bleeding doesn't stop after 15 minutes, seek emergency care</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                            <span>Don't ignore deep cuts or punctures that may need stitches</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <div class="inline-block bg-gray-100 px-8 py-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Important Reminder</h3>
+                    <p class="text-gray-700">These first aid tips are temporary measures only. Always seek professional dental care for emergencies as soon as possible.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-red-500 text-white">
+    <!-- Call to Action -->
+    <section class="py-20 bg-emergency text-white">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Need Emergency Dental Care?</h2>
-            <p class="text-xl mb-8">Don't wait - call us immediately for urgent dental problems.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="tel:+254720400391" class="bg-white text-red-500 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition">Call Emergency Line</a>
-                <a href="index.html#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-red-500 transition">Contact Us</a>
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Need Emergency Dental Care?</h2>
+                <p class="text-xl mb-8">Don't wait - contact us immediately for urgent dental problems. We're available 24/7.</p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="tel:+254707092373" class="bg-white text-emergency hover:bg-gray-100 transition-colors duration-300 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center shadow-lg">
+                        <i class="fas fa-phone-alt mr-2"></i> Call Emergency Line
+                    </a>
+                    <a href="index.html#contact" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-emergency transition-colors duration-300 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center shadow-lg">
+                        <i class="fas fa-envelope mr-2"></i> Contact Us
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <div class="text-center">
-                <div class="flex items-center justify-center mb-6">
-                    <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto object-contain">
-                    <h3 class="ml-3 text-xl font-bold">Afya Mile Dental</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="mb-8">
+                    <div class="flex items-center mb-4">
+                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto mr-3">
+                        <div>
+                            <h3 class="font-bold text-xl">Afya Mile</h3>
+                            <p class="text-sm text-gray-400">Dental Clinic</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your smile is our priority. We're dedicated to providing quality dental care for the whole family.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
-                <p>&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
+                
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4">Our Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="general-dentistry.html" class="text-gray-400 hover:text-white transition-colors duration-300">General Dentistry</a></li>
+                        <li><a href="orthodontics.html" class="text-gray-400 hover:text-white transition-colors duration-300">Orthodontics</a></li>
+                        <li><a href="cosmetic-dentistry.html" class="text-gray-400 hover:text-white transition-colors duration-300">Cosmetic Dentistry</a></li>
+                        <li><a href="dental-implants.html" class="text-gray-400 hover:text-white transition-colors duration-300">Dental Implants</a></li>
+                        <li><a href="pediatric-dentistry.html" class="text-gray-400 hover:text-white transition-colors duration-300">Pediatric Dentistry</a></li>
+                        <li><a href="emergency-care.html" class="text-gray-400 hover:text-white transition-colors duration-300">Emergency Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                            <span class="text-gray-400">Standard Street, 4th Floor, CBD, Nairobi, Kenya</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-primary"></i>
+                            <span class="text-gray-400">+254 707 092 373</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-primary"></i>
+                            <span class="text-gray-400">info@afyamiledental.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-primary"></i>
+                            <span class="text-gray-400">Mon-Fri: 8AM - 6PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-8 text-center">
+                <p class="text-gray-500">&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark') body.classList.add('dark-mode');
-        darkModeToggle.addEventListener('click', function() {
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // Loader
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.loader');
+            setTimeout(function() {
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 200);
+            }, 500);
+        });
+        
+        // Scroll Progress Indicator
+        window.addEventListener('scroll', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (windowScroll / height) * 100;
+            scrollIndicator.style.width = scrolled + '%';
+            
+            // Header Scrolled Class
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Show/hide mobile menu
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Dropdown menu behavior
+        const dropdowns = document.querySelectorAll('.dropdown-wrapper');
+        
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', () => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                menu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                menu.classList.remove('opacity-0', '-translate-y-3', 'pointer-events-none');
+            });
+            
+            dropdown.addEventListener('mouseleave', () => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                menu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                menu.classList.add('opacity-0', '-translate-y-3', 'pointer-events-none');
+            });
         });
     </script>
 </body>

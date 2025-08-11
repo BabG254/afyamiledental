@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>General Dentistry | Afya Mile Dental Clinic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -18,215 +19,630 @@
                         accent: '#ffc107'
                     },
                     fontFamily: {
-                        'opensans': ['Open Sans', 'sans-serif'],
-                        'lato': ['Lato', 'sans-serif']
-                    }
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'montserrat': ['Montserrat', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out 1s infinite',
+                        'float-slow': 'float 10s ease-in-out 2s infinite',
+                        'pulse-ring': 'pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scroll-down': 'scrollDown 2s ease infinite',
+                    },
                 }
             }
         }
     </script>
     <style>
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
         
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
         
-        .dark-mode {
-            background-color: #1a202c;
-            color: #f7fafc;
+        /* Glass Effect Header */
+        .glass-header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.5s;
         }
         
-        .dark-mode .bg-white {
-            background-color: #2d3748;
-            color: #f7fafc;
+        .scrolled .glass-header {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.95);
         }
         
-        .dark-mode .text-gray-700 {
-            color: #f7fafc;
+        /* Section Transitions */
+        .section-transition {
+            position: relative;
+            overflow: hidden;
         }
         
-        .dark-mode .bg-gray-100 {
-            background-color: #4a5568;
+        .section-transition::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom right, transparent 49%, currentColor 50%);
+            color: inherit;
+            opacity: 0.05;
         }
         
-        .dark-mode .border-gray-200 {
-            border-color: #4a5568;
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
         }
         
-        .dark-mode .text-gray-900 {
-            color: #f7fafc;
+        @keyframes scrollDown {
+            0% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
         }
         
-        .dark-mode .bg-lightBlue {
-            background-color: #2d3748;
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            70% {
+                transform: scale(2);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
         }
         
-        .dark-mode header {
-            background-color: #2d3748;
+        /* Loader - optimized for faster loading */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.2s, visibility 0.2s;
         }
         
-        .dark-mode footer {
-            background-color: #1a202c;
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #007bff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Scroll Progress Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #007bff, #28a745);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.2s ease-out;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+        
+        .pulse-ring {
+            position: relative;
+        }
+        
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background-color: currentColor;
+            opacity: 0.4;
+            animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
     </style>
 </head>
 <body class="bg-white text-gray-700">
-    <!-- Header -->
-    <header class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto object-contain">
-                <h1 class="ml-3 text-2xl font-bold text-primary">Dental Cliic</h1>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254707092373" target="_blank" class="fixed bottom-8 left-8 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110 pulse-ring">
+        <span class="absolute inset-0 w-full h-full bg-green-500 rounded-full animate-pulse-ring opacity-40"></span>
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="bg-green-600 text-white text-xs absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center rounded-full">1</span>
+    </a>
+
+    <!-- Modern Premium Header -->
+    <header class="fixed w-full z-50 header-wrapper" id="header">
+        <div class="glass-header shadow-sm transition-all duration-500">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <!-- Logo Area with Enhanced Animation -->
+                <div class="flex items-center" data-aos="fade-right">
+                    <div class="logo-container relative overflow-hidden">
+                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-14 w-auto object-contain animate-float shadow-lg rounded-full p-1 bg-white/90">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 animate-pulse"></div>
+                    </div>
+                    <div class="ml-3 flex flex-col">
+                        <h1 class="text-2xl font-bold text-primary leading-tight">Afya Mile Dental</h1>
+                        <span class="text-xs text-secondary font-medium tracking-wider">Your Smile, Our Priority</span>
+                    </div>
+                </div>
+                
+                <!-- Top Info Bar (Desktop) -->
+                <div class="hidden lg:flex absolute top-0 right-0 bg-primary/90 text-white px-6 py-1 rounded-bl-2xl shadow-md">
+                    <div class="flex items-center text-sm mr-6">
+                        <i class="fas fa-phone-alt mr-2 text-accent animate-pulse"></i>
+                        <a href="tel:+254707092373" class="hover:text-accent transition-colors">+254 707 092 373</a>
+                    </div>
+                    <div class="flex items-center text-sm mr-6">
+                        <i class="fas fa-map-marker-alt mr-2 text-accent"></i>
+                        <span>Standard Street, CBD Nairobi</span>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <i class="fas fa-clock mr-2 text-accent"></i>
+                        <span>Mon-Fri: 8AM-6PM | Sat: 9AM-2PM</span>
+                    </div>
+                </div>
+                
+                <!-- Primary Navigation (WordPress-style) -->
+                <nav class="hidden md:flex items-center">
+                    <ul class="flex space-x-1">
+                        <li class="group relative">
+                            <a href="index.html" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Home</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#about" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">About</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative dropdown-wrapper">
+                            <a href="index.html#services" class="block py-2 px-3 text-primary font-semibold hover:text-secondary transition-all duration-300 hover:scale-105 flex items-center">
+                                <span class="relative z-10">Services</span>
+                                <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                            <div class="dropdown-menu absolute left-0 mt-1 w-64 bg-white shadow-xl rounded-lg py-2 transform opacity-0 -translate-y-3 pointer-events-none transition-all duration-300 z-50">
+                                <a href="general-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all font-semibold">General Dentistry</a>
+                                <a href="cosmetic-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Cosmetic Dentistry</a>
+                                <a href="orthodontics.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Orthodontics</a>
+                                <a href="pediatric-dentistry.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Pediatric Dentistry</a>
+                                <a href="dental-implants.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Dental Implants</a>
+                                <a href="emergency-care.html" class="block px-4 py-2 hover:bg-gray-50 hover:text-primary transition-all">Emergency Care</a>
+                            </div>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#insurance" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Insurance</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#testimonials" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Testimonials</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                        <li class="group relative">
+                            <a href="index.html#contact" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Contact</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- CTA and Mobile Toggle -->
+                <div class="flex items-center">
+                    <a href="index.html#appointment" class="btn-primary bg-primary text-white px-5 py-3 rounded-lg hover:bg-secondary transition-all duration-300 relative overflow-hidden shadow-lg group">
+                        <span class="relative z-10 font-semibold tracking-wide flex items-center">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            <span>Book Appointment</span>
+                        </span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                    </a>
+                    <button id="mobileMenuToggle" class="md:hidden ml-4 text-gray-600 hover:text-primary transition-all duration-300 bg-gray-100 p-2 rounded-lg">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="hover:text-secondary transition">Home</a>
-                <a href="index.html#about" class="hover:text-secondary transition">About</a>
-                <a href="index.html#services" class="text-primary font-semibold hover:text-secondary transition">Services</a>
-                <a href="index.html#insurance" class="hover:text-secondary transition">Insurance</a>
-                <a href="index.html#testimonials" class="hover:text-secondary transition">Testimonials</a>
-                <a href="index.html#contact" class="hover:text-secondary transition">Contact</a>
-            </nav>
-            
-            <div class="flex items-center">
-                <a href="index.html#appointment" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition mr-4">
-                    Book Appointment
-                </a>
-                <button id="darkModeToggle" class="text-gray-600 hover:text-primary">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="md:hidden ml-4 text-gray-600">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+        </div>
+        
+        <!-- Modern Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden mobile-menu border-t border-gray-200 bg-white/95 backdrop-blur-lg shadow-lg">
+            <div class="container mx-auto px-4 py-4">
+                <!-- Mobile Quick Info -->
+                <div class="flex flex-col space-y-2 mb-6 border-b border-gray-200 pb-4">
+                    <a href="tel:+254707092373" class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-phone text-primary"></i>
+                        </span>
+                        +254 707 092 373
+                    </a>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                        </span>
+                        Standard Street, CBD Nairobi
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <span class="bg-primary/10 p-2 rounded-full mr-3">
+                            <i class="fas fa-clock text-primary"></i>
+                        </span>
+                        Mon-Fri: 8AM-6PM | Sat: 9AM-2PM
+                    </div>
+                </div>
+                
+                <!-- Mobile Navigation Links -->
+                <nav class="flex flex-col">
+                    <a href="index.html" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Home</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#about" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>About</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#services" class="group flex items-center justify-between text-primary font-semibold hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Services</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#insurance" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Insurance</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#testimonials" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Testimonials</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#contact" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Contact</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="index.html#appointment" class="btn-primary bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg transition text-center mt-6 shadow-lg">
+                        <i class="fas fa-calendar-check mr-2"></i> Book Appointment
+                    </a>
+                </nav>
+                
+                <!-- Social Media Icons -->
+                <div class="flex justify-center space-x-4 mt-6 pt-4 border-t border-gray-200">
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="pt-32 pb-16 bg-lightBlue">
-        <div class="container mx-auto px-4">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">General Dentistry</h1>
-                <div class="w-20 h-1 bg-secondary mx-auto mb-6"></div>
-                <p class="text-lg max-w-2xl mx-auto">Comprehensive dental care to maintain your oral health and prevent future problems</p>
+    <!-- Mobile Nav Spacer - Ensures content appears below fixed header on mobile -->
+    <div class="h-16 md:h-0"></div>
+    
+    <!-- Page Header - Enhanced Version -->
+    <section class="relative py-24 md:py-32 bg-gradient-to-br from-primary/90 to-secondary/90 text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20"></div>
+            <!-- Mobile-Optimized Animated Shapes -->
+            <div class="absolute top-1/3 left-1/4 w-32 md:w-64 h-32 md:h-64 rounded-full bg-primary/20 backdrop-blur-xl filter animate-float"></div>
+            <div class="absolute -bottom-16 -right-16 w-48 md:w-96 h-48 md:h-96 rounded-full bg-secondary/20 backdrop-blur-xl filter animate-float-delayed"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="inline-block px-4 py-1 bg-white/20 backdrop-blur-md rounded-full text-sm font-semibold mb-4" data-aos="fade-down">
+                    <i class="fas fa-tooth mr-2"></i>Our Services
+                </span>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6" data-aos="fade-up">General Dentistry</h1>
+                <div class="w-20 h-1 bg-accent mx-auto mb-6" data-aos="zoom-in" data-aos-delay="200"></div>
+                <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="300">
+                    Comprehensive dental care to maintain your oral health and prevent future problems
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#services-offered" class="bg-white text-primary px-6 py-3 rounded-lg font-bold hover:bg-accent hover:text-white transition-all duration-300 shadow-lg flex items-center">
+                        <i class="fas fa-list-check mr-2"></i> Our Services
+                    </a>
+                    <a href="index.html#appointment" class="bg-accent/90 text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-primary transition-all duration-300 shadow-lg flex items-center">
+                        <i class="fas fa-calendar-check mr-2"></i> Book Appointment
+                    </a>
+                </div>
             </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute bottom-0 left-0 w-full h-16">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-full">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,154.7C384,149,480,107,576,112C672,117,768,171,864,176C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
         </div>
     </section>
 
     <!-- Service Details -->
-    <section class="py-20">
+    <section class="py-16 md:py-24 section-transition">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-primary mb-6">What is General Dentistry?</h2>
-                    <p class="mb-6">General dentistry focuses on the prevention, diagnosis, and treatment of a wide variety of conditions, disorders, and diseases affecting the teeth, gums, and maxillofacial (jaw and face) region of the body.</p>
-                    <p class="mb-6">Our general dentistry services form the foundation of good oral health and are essential for maintaining a healthy, beautiful smile throughout your lifetime.</p>
+                <div class="order-2 lg:order-1" data-aos="fade-right" data-aos-duration="800">
+                    <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                        Comprehensive Care
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">What is General Dentistry?</h2>
+                    <p class="mb-6 text-gray-600 leading-relaxed">
+                        General dentistry focuses on the prevention, diagnosis, and treatment of a wide variety of conditions, disorders, and diseases affecting the teeth, gums, and maxillofacial (jaw and face) region of the body.
+                    </p>
+                    <p class="mb-8 text-gray-600 leading-relaxed">
+                        Our general dentistry services form the foundation of good oral health and are essential for maintaining a healthy, beautiful smile throughout your lifetime. We emphasize preventive care to avoid problems before they start, saving you time, discomfort, and expense.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex items-center bg-secondary/10 px-4 py-3 rounded-lg">
+                            <i class="fas fa-check-circle text-secondary mr-3 text-xl"></i>
+                            <span class="font-medium">Preventive Care</span>
+                        </div>
+                        <div class="flex items-center bg-secondary/10 px-4 py-3 rounded-lg">
+                            <i class="fas fa-check-circle text-secondary mr-3 text-xl"></i>
+                            <span class="font-medium">Regular Check-ups</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-tooth text-8xl text-primary"></i>
+                <div class="order-1 lg:order-2 relative" data-aos="fade-left" data-aos-duration="800">
+                    <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dental Check-up" class="rounded-2xl shadow-xl w-full max-w-md mx-auto transform hover:scale-105 transition-transform duration-500 z-10 relative">
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-accent/20 rounded-full -z-10"></div>
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/10 rounded-full -z-10"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Offered -->
-    <section class="py-20 bg-lightBlue">
+    <section id="services-offered" class="py-16 md:py-24 bg-gray-50 section-transition">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800">
+                <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    Our Services
+                </span>
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">General Dentistry Services</h2>
-                <div class="w-20 h-1 bg-secondary mx-auto"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    We offer a comprehensive range of general dentistry services to keep your smile healthy and beautiful for years to come.
+                </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-shield-alt text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Preventive Care</h3>
-                    <p>Regular cleanings, fluoride treatments, and sealants to prevent decay and gum disease.</p>
+                <!-- Service 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-primary/10 rounded-xl w-16 h-16 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-shield-alt text-3xl text-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-all duration-300">Preventive Care</h3>
+                    <p class="text-gray-600 leading-relaxed">Regular cleanings, fluoride treatments, and sealants to prevent decay and gum disease before they start.</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-search text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Dental Exams</h3>
-                    <p>Comprehensive oral examinations to detect problems early and maintain optimal oral health.</p>
+                <!-- Service 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-primary/10 rounded-xl w-16 h-16 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-search text-3xl text-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-all duration-300">Dental Exams</h3>
+                    <p class="text-gray-600 leading-relaxed">Comprehensive oral examinations to detect problems early and maintain optimal oral health for the entire family.</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-tools text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Fillings & Restorations</h3>
-                    <p>Tooth-colored fillings and other restorative treatments to repair damaged teeth.</p>
+                <!-- Service 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-primary/10 rounded-xl w-16 h-16 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-tools text-3xl text-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-all duration-300">Fillings & Restorations</h3>
+                    <p class="text-gray-600 leading-relaxed">Tooth-colored fillings and other restorative treatments to repair damaged teeth and restore your beautiful smile.</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-hand-holding-heart text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Gum Disease Treatment</h3>
-                    <p>Treatment and management of gingivitis and periodontal disease.</p>
+                <!-- Service 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-primary/10 rounded-xl w-16 h-16 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-hand-holding-heart text-3xl text-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-all duration-300">Gum Disease Treatment</h3>
+                    <p class="text-gray-600 leading-relaxed">Treatment and management of gingivitis and periodontal disease to protect your gums and overall oral health.</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-x-ray text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Digital X-Rays</h3>
-                    <p>Modern digital imaging technology for accurate diagnosis with reduced radiation exposure.</p>
+                <!-- Service 5 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-primary/10 rounded-xl w-16 h-16 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-x-ray text-3xl text-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-all duration-300">Digital X-Rays</h3>
+                    <p class="text-gray-600 leading-relaxed">Modern digital imaging technology for accurate diagnosis with reduced radiation exposure for your safety.</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <i class="fas fa-clipboard-list text-4xl text-secondary mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Oral Health Education</h3>
-                    <p>Personalized guidance on proper oral hygiene techniques and preventive care.</p>
+                <!-- Service 6 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-primary/10 rounded-xl w-16 h-16 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-clipboard-list text-3xl text-primary group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-all duration-300">Oral Health Education</h3>
+                    <p class="text-gray-600 leading-relaxed">Personalized guidance on proper oral hygiene techniques and preventive care to maintain your smile between visits.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-20">
+    <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    Why Us
+                </span>
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Why Choose Our General Dentistry Services?</h2>
-                <div class="w-20 h-1 bg-secondary mx-auto"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">
+                    At Afya Mile Dental, we're committed to providing exceptional general dentistry services that prioritize your comfort, health, and satisfaction.
+                </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-md text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Expert Team</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Experienced and skilled dental professionals dedicated to providing the highest quality care.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Experienced and skilled dental professionals</span>
+                            <span>Advanced training and education</span>
                         </li>
-                        <li class="flex items-start">
+                        <li class="flex items-start text-sm">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>State-of-the-art dental technology and equipment</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Comprehensive treatment planning</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Focus on patient comfort and satisfaction</span>
+                            <span>Years of clinical experience</span>
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-microscope text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Modern Technology</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">State-of-the-art dental technology and equipment for accurate diagnosis and effective treatment.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Preventive approach to oral health care</span>
+                            <span>Digital X-rays with less radiation</span>
                         </li>
-                        <li class="flex items-start">
+                        <li class="flex items-start text-sm">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Flexible scheduling and convenient appointments</span>
+                            <span>Advanced diagnostic tools</span>
                         </li>
-                        <li class="flex items-start">
+                    </ul>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-smile-beam text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Patient-Centered Care</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Focus on patient comfort, education, and personalized treatment plans for optimal results.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Insurance accepted and affordable payment options</span>
+                            <span>Comfortable, relaxing environment</span>
                         </li>
-                        <li class="flex items-start">
+                        <li class="flex items-start text-sm">
                             <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
-                            <span>Family-friendly environment for all ages</span>
+                            <span>Clear communication and education</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-calendar-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Convenient Scheduling</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Flexible appointment options to accommodate your busy lifestyle and make dental care accessible.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Extended hours available</span>
+                        </li>
+                        <li class="flex items-start text-sm">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Online appointment booking</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Preventive Focus</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Emphasis on preventive care to maintain optimal oral health and prevent future problems.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Customized preventive plans</span>
+                        </li>
+                        <li class="flex items-start text-sm">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Regular check-ups and cleanings</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-credit-card text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Affordable Options</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">Insurance accepted and affordable payment options to make quality dental care accessible to all.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-sm">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Multiple insurance plans accepted</span>
+                        </li>
+                        <li class="flex items-start text-sm">
+                            <i class="fas fa-check-circle text-secondary mt-1 mr-3"></i>
+                            <span>Flexible payment arrangements</span>
                         </li>
                     </ul>
                 </div>
@@ -235,82 +651,352 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-primary text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Schedule Your General Dentistry Appointment?</h2>
-            <p class="text-xl mb-8">Take the first step towards optimal oral health with our comprehensive general dentistry services.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="index.html#appointment" class="bg-accent text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-secondary hover:text-white transition">Book an Appointment</a>
-                <a href="index.html#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-primary transition">Contact Us</a>
+    <section class="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-primary to-primary/80 text-white">
+        <!-- Decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/20 rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl"></div>
+            
+            <!-- Dental icons pattern -->
+            <div class="absolute inset-0 opacity-10">
+                <i class="fas fa-tooth absolute top-1/4 left-1/4 text-6xl transform -rotate-15"></i>
+                <i class="fas fa-teeth absolute top-1/3 right-1/4 text-5xl transform rotate-12"></i>
+                <i class="fas fa-tooth absolute bottom-1/4 left-1/3 text-7xl transform rotate-45"></i>
+                <i class="fas fa-teeth-open absolute bottom-1/3 right-1/3 text-6xl transform -rotate-20"></i>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+                <span class="inline-block px-3 py-1 bg-white/20 text-white rounded-full text-sm font-medium mb-6">
+                    Book Today
+                </span>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Schedule Your General Dentistry Appointment?</h2>
+                <p class="text-lg md:text-xl mb-10 text-white/90">
+                    Take the first step towards optimal oral health with our comprehensive general dentistry services. Our team is ready to provide you with exceptional care.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="index.html#appointment" class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-accent hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Book an Appointment
+                    </a>
+                    <a href="index.html#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        Contact Us
+                    </a>
+                </div>
+                
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Feature 1 -->
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center justify-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar text-2xl mr-3 text-accent"></i>
+                            <span>Same-Day Appointments</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center justify-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-2xl mr-3 text-accent"></i>
+                            <span>Flexible Scheduling</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center justify-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-2xl mr-3 text-accent"></i>
+                            <span>Insurance Accepted</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                <div>
+    <!-- Modern Premium Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-8 relative overflow-hidden">
+        <!-- Decorative background elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-24">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-full rotate-180">
+                    <path fill="#ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,154.7C384,149,480,107,576,112C672,117,768,171,864,176C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+            </div>
+            <div class="absolute top-1/4 -right-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl"></div>
+            <div class="absolute bottom-1/3 -left-24 w-96 h-96 rounded-full bg-secondary/10 blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Footer Top Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Column 1: About -->
+                <div data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-6">
-                        <img src="logo.png" alt="Afya Mile Dental Logo" class="h-10 w-auto object-contain">
-                        <h3 class="ml-3 text-xl font-bold">Afya Mile Dental</h3>
+                        <div class="relative mr-3">
+                            <img src="logo.png" alt="Afya Mile Dental Logo" class="h-12 w-auto object-contain bg-white p-1 rounded-full">
+                            <div class="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 animate-pulse-ring"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Afya Mile Dental</h3>
+                            <p class="text-xs text-gray-400">Your Smile, Our Priority</p>
+                        </div>
                     </div>
-                    <p class="mb-6">Providing exceptional dental care with compassion and professionalism since 2010.</p>
+                    <p class="text-gray-400 mb-6">Providing exceptional dental care with compassion and professionalism since 2010. We're dedicated to creating beautiful, healthy smiles that last a lifetime.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white">
+                        <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center bg-gray-800 text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
+                        <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center bg-gray-800 text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
+                        <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center bg-gray-800 text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
+                        <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center bg-gray-800 text-gray-400 hover:bg-primary hover:text-white transition-all duration-300">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
                 
-                <div>
-                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <!-- Column 2: Quick Links -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-lg font-bold mb-6 relative inline-block">
+                        Quick Links
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+                    </h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition">Services</a></li>
-                        <li><a href="index.html#insurance" class="text-gray-400 hover:text-white transition">Insurance</a></li>
-                        <li><a href="index.html#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
-                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li>
+                            <a href="index.html" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#about" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>About Us</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#services" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#insurance" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Insurance</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#testimonials" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Testimonials</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#contact" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Contact</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 
-                <div>
-                    <h4 class="text-lg font-bold mb-6">Our Services</h4>
+                <!-- Column 3: Our Services -->
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-lg font-bold mb-6 relative inline-block">
+                        Our Services
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+                    </h4>
                     <ul class="space-y-3">
-                        <li><a href="general-dentistry.html" class="text-gray-400 hover:text-white transition">General Dentistry</a></li>
-                        <li><a href="orthodontics.html" class="text-gray-400 hover:text-white transition">Orthodontics</a></li>
-                        <li><a href="cosmetic-dentistry.html" class="text-gray-400 hover:text-white transition">Cosmetic Dentistry</a></li>
-                        <li><a href="pediatric-dentistry.html" class="text-gray-400 hover:text-white transition">Pediatric Dentistry</a></li>
-                        <li><a href="dental-implants.html" class="text-gray-400 hover:text-white transition">Dental Implants</a></li>
-                        <li><a href="emergency-care.html" class="text-gray-400 hover:text-white transition">Emergency Care</a></li>
+                        <li>
+                            <a href="general-dentistry.html" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>General Dentistry</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orthodontics.html" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Orthodontics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="cosmetic-dentistry.html" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Cosmetic Dentistry</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pediatric-dentistry.html" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Pediatric Dentistry</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dental-implants.html" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Dental Implants</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="emergency-care.html" class="text-gray-400 hover:text-white transition-all duration-300 flex items-center group">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-primary group-hover:translate-x-1 transition-transform duration-300"></i>
+                                <span>Emergency Care</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 
-                <div>
-                    <h4 class="text-lg font-bold mb-6">Contact Info</h4>
-                    <div class="space-y-3">
-                        <p class="text-gray-400">Standard St, Nairobi, Kenya</p>
-                        <p class="text-gray-400">+254 720 400 391</p>
-                        <p class="text-gray-400">info@afyamiledental.co.ke</p>
+                <!-- Column 4: Contact Info -->
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="text-lg font-bold mb-6 relative inline-block">
+                        Contact Info
+                        <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-primary rounded-full"></span>
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary/20 rounded-full p-3 mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold">Location</h5>
+                                <p class="text-gray-400">Standard St, Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/20 rounded-full p-3 mr-4 mt-1">
+                                <i class="fas fa-phone-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold">Phone Number</h5>
+                                <p class="text-gray-400">+254 720 400 391</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/20 rounded-full p-3 mr-4 mt-1">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold">Email Address</h5>
+                                <p class="text-gray-400">info@afyamiledental.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/20 rounded-full p-3 mr-4 mt-1">
+                                <i class="fas fa-clock text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold">Working Hours</h5>
+                                <p class="text-gray-400">Mon-Fri: 8AM-6PM<br>Sat: 9AM-2PM</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
+            <!-- Newsletter Section -->
+            <div class="border-t border-gray-800 pt-8 pb-12 flex flex-col md:flex-row gap-8 items-center justify-between">
+                <div class="max-w-md">
+                    <h4 class="text-xl font-bold mb-2">Subscribe to Our Newsletter</h4>
+                    <p class="text-gray-400">Stay up to date with the latest dental tips, promotions, and news.</p>
+                </div>
+                <div class="w-full max-w-md relative">
+                    <input type="email" placeholder="Enter your email address" class="w-full bg-gray-800 border border-gray-700 text-white py-3 px-4 pr-12 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-white py-1 px-3 rounded hover:bg-secondary transition-all duration-300">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
             <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
                 <p>&copy; 2025 Afya Mile Dental Clinic. All rights reserved.</p>
+                <div class="flex justify-center space-x-4 mt-4 text-sm">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="#" class="hover:text-primary transition-colors">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
+    
+    <!-- AOS Init -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Show/hide mobile menu
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Header scroll behavior
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Dropdown menu behavior
+        const dropdowns = document.querySelectorAll('.dropdown-wrapper');
+        
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', () => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                menu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                menu.classList.remove('opacity-0', '-translate-y-3', 'pointer-events-none');
+            });
+            
+            dropdown.addEventListener('mouseleave', () => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                menu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                menu.classList.add('opacity-0', '-translate-y-3', 'pointer-events-none');
+            });
+        });
+        
+        // Page loading animation - optimized for faster display
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 200);
+        });
+        
+        // Scroll progress indicator
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            
+            scrollIndicator.style.width = scrolled + '%';
+        });
+    </script>
 
     <script>
         // Dark Mode Toggle
