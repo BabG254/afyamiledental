@@ -12,9 +12,9 @@ Welcome to Afya Mile Dental Clinic, your premier dental care destination in Nair
 - Emergency Dental Care
 
 ## Contact Information
-- **Phone**: +254 700 123456
-- **Email**: info@afyamiledental.co.ke
-- **Location**: Nairobi, Kenya
+- **Phone**: +254 720 400391
+- **Email**: afyamiledentalclinic680@gmail.com
+- **Location**: 680 hotel building; ground floor opposite Bruce house, Nairobi, Kenya
 - **Hours**: 
   - Monday - Friday: 8:00 AM - 6:00 PM
   - Saturday: 9:00 AM - 4:00 PM
