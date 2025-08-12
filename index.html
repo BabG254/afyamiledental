@@ -1129,6 +1129,12 @@
                                 <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
                             </a>
                         </li>
+                        <li class="group relative">
+                            <a href="#facility" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105">
+                                <span class="relative z-10">Our Facility</span>
+                                <span class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+                            </a>
+                        </li>
                         <li class="group relative dropdown-wrapper">
                             <a href="#services" class="block py-2 px-3 hover:text-secondary transition-all duration-300 hover:scale-105 flex items-center">
                                 <span class="relative z-10">Services</span>
@@ -1214,6 +1220,10 @@
                     </a>
                     <a href="#about" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
                         <span>About</span>
+                        <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    <a href="#facility" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
+                        <span>Our Facility</span>
                         <i class="fas fa-chevron-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
                     </a>
                     <a href="#services" class="group flex items-center justify-between hover:text-secondary transition py-3 px-2 border-b border-gray-100">
@@ -1574,6 +1584,49 @@
             </div>
         </div>
     </section>
+    
+    <!-- Our Modern Facility Gallery Section -->
+    <section id="facility" class="py-16 md:py-20 bg-gray-50 section-transition">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Modern Facility</h2>
+                <div class="w-20 h-1 bg-secondary mx-auto"></div>
+                <p class="mt-6 text-base md:text-lg max-w-2xl mx-auto">Experience dental care in our state-of-the-art clinic equipped with the latest technology</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Dental Chair Image -->
+                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group" data-aos="fade-right">
+                    <div class="relative overflow-hidden h-64 md:h-80">
+                        <img src="1.jpeg" alt="Afya Mile Dental Clinic Modern Dental Chair" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 shadow-lg">
+                            <span class="text-xs font-bold text-primary">Advanced Equipment</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <h4 class="font-bold text-xl text-gray-800 mb-2">State-of-the-Art Treatment Room</h4>
+                        <p class="text-gray-600">Our modern dental chairs and equipment are designed for precision treatments and maximum patient comfort during procedures.</p>
+                    </div>
+                </div>
+                
+                <!-- Reception Image -->
+                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group" data-aos="fade-left">
+                    <div class="relative overflow-hidden h-64 md:h-80">
+                        <img src="2.jpeg" alt="Afya Mile Dental Clinic Reception Area" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 shadow-lg">
+                            <span class="text-xs font-bold text-primary">Welcoming Environment</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white">
+                        <h4 class="font-bold text-xl text-gray-800 mb-2">Warm Reception Area</h4>
+                        <p class="text-gray-600">Our reception area is designed to make you feel welcome and comfortable from the moment you step into our clinic.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Services Section -->
     <section id="services" class="py-16 md:py-20 section-transition">
@@ -1588,7 +1641,7 @@
                 <!-- Service 1 -->
                 <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden transition group" data-aos="fade-up" data-aos-delay="100">
                     <div class="h-40 md:h-48 relative overflow-hidden">
-                        <img src="logo.png" alt="General Dentistry" class="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110">
+                        <img src="general.jpg" alt="General Dentistry" class="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-60"></div>
                         <i class="fas fa-tooth absolute bottom-4 right-4 text-3xl text-white z-10"></i>
                     </div>
@@ -1636,7 +1689,7 @@
                 <!-- Service 4 -->
                 <div class="service-card bg-white rounded-xl shadow-lg overflow-hidden transition group" data-aos="fade-up" data-aos-delay="400">
                     <div class="h-40 md:h-48 relative overflow-hidden">
-                        <img src="logo.png" alt="Pediatric Dentistry" class="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110">
+                        <img src="pediatric.png" alt="Pediatric Dentistry" class="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-60"></div>
                         <i class="fas fa-child absolute bottom-4 right-4 text-3xl text-white z-10"></i>
                     </div>
