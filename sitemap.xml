@@ -4,102 +4,79 @@
     <!-- Homepage -->
     <url>
         <loc>https://afyamiledental.com/</loc>
-        <lastmod>2025-08-08</lastmod>
+        <lastmod>2025-08-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/afya-mile-dental-clinic-nairobi-cbd.jpg</image:loc>
-            <image:caption>Afya Mile Dental Clinic - Premier Dental Care in Nairobi CBD - South Sudanese Welcome</image:caption>
+            <image:loc>https://afyamiledental.com/logo.png</image:loc>
+            <image:caption>Afya Mile Dental Clinic - Premier Dental Care in Nairobi CBD</image:caption>
         </image:image>
     </url>
     
     <!-- Service Pages -->
     <url>
         <loc>https://afyamiledental.com/general-dentistry.html</loc>
-        <lastmod>2025-08-08</lastmod>
+        <lastmod>2025-08-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/general-dentistry-cbd.jpg</image:loc>
-            <image:caption>General Dentistry Services at Afya Mile Dental - CBD Location</image:caption>
+            <image:loc>https://afyamiledental.com/general.jpg</image:loc>
+            <image:caption>General Dentistry Services at Afya Mile Dental - 680 hotel building</image:caption>
         </image:image>
     </url>
     
     <url>
         <loc>https://afyamiledental.com/orthodontics.html</loc>
-        <lastmod>2025-08-08</lastmod>
+        <lastmod>2025-08-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/orthodontics-braces-nairobi.jpg</image:loc>
-            <image:caption>Orthodontics and Braces at Afya Mile Dental - Multilingual Support</image:caption>
+            <image:loc>https://afyamiledental.com/orthodontics.png</image:loc>
+            <image:caption>Orthodontics and Braces at Afya Mile Dental</image:caption>
         </image:image>
     </url>
     
     <url>
         <loc>https://afyamiledental.com/cosmetic-dentistry.html</loc>
-        <lastmod>2025-08-08</lastmod>
+        <lastmod>2025-08-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/cosmetic-dentistry-cbd.jpg</image:loc>
+            <image:loc>https://afyamiledental.com/cosmetic.jpg</image:loc>
             <image:caption>Cosmetic Dentistry Services in Nairobi CBD</image:caption>
         </image:image>
     </url>
     
     <url>
         <loc>https://afyamiledental.com/pediatric-dentistry.html</loc>
-        <lastmod>2025-08-08</lastmod>
+        <lastmod>2025-08-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/pediatric-dentistry-children.jpg</image:loc>
+            <image:loc>https://afyamiledental.com/pediatric.png</image:loc>
             <image:caption>Pediatric Dentistry for Children in Nairobi CBD</image:caption>
         </image:image>
     </url>
     
     <url>
         <loc>https://afyamiledental.com/dental-implants.html</loc>
-        <lastmod>2025-08-08</lastmod>
+        <lastmod>2025-08-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
         <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/dental-implants-nairobi.jpg</image:loc>
+            <image:loc>https://afyamiledental.com/implants.png</image:loc>
             <image:caption>Dental Implants at Afya Mile Dental Clinic CBD</image:caption>
         </image:image>
     </url>
     
     <url>
         <loc>https://afyamiledental.com/emergency-care.html</loc>
-        <lastmod>2025-08-08</lastmod>
+        <lastmod>2025-08-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
         <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/emergency-dental-care-cbd.jpg</image:loc>
+            <image:loc>https://afyamiledental.com/dental-emergency.jpg</image:loc>
             <image:caption>24/7 Emergency Dental Care Services in Nairobi CBD</image:caption>
-        </image:image>
-    </url>
-    
-    <!-- Location and Community Pages -->
-    <url>
-        <loc>https://afyamiledental.com/cbd-location.html</loc>
-        <lastmod>2025-08-08</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/680-hotel-building-location.jpg</image:loc>
-            <image:caption>Afya Mile Dental Clinic Location - 680 hotel building opposite Bruce house</image:caption>
-        </image:image>
-    </url>
-    
-    <url>
-        <loc>https://afyamiledental.com/multilingual-services.html</loc>
-        <lastmod>2025-08-08</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image>
-            <image:loc>https://afyamiledental.com/assets/images/multilingual-dental-care.jpg</image:loc>
-            <image:caption>Multilingual Dental Services - Arabic and English Speaking Staff</image:caption>
         </image:image>
     </url>
     

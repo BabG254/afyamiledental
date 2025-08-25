@@ -1,15 +1,13 @@
 User-agent: *
 Allow: /
 
-# Optimize crawling for dental services and location pages
+# Allow crawling of all service pages
 Allow: /general-dentistry.html
 Allow: /orthodontics.html
 Allow: /cosmetic-dentistry.html
 Allow: /pediatric-dentistry.html
 Allow: /dental-implants.html
 Allow: /emergency-care.html
-Allow: /cbd-location.html
-Allow: /multilingual-services.html
 
 # Sitemap location
 Sitemap: https://afyamiledental.com/sitemap.xml
