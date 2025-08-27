@@ -21,11 +21,12 @@
     <link rel="alternate" hreflang="en" href="https://afyamiledental.com/">
     <link rel="alternate" hreflang="x-default" href="https://afyamiledental.com/">
     
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://afyamiledental.com/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://afyamiledental.com/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://afyamiledental.com/favicon-16x16.png">
-    <link rel="manifest" href="https://afyamiledental.com/site.webmanifest">
+    <!-- Favicon - Using existing logo.png -->
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#007bff">
     
     <!-- Geographic Meta Tags -->
@@ -64,21 +65,32 @@
         "@type": "Dentist",
         "@id": "https://afyamiledental.com/#dentist",
         "name": "Afya Mile Dental Clinic",
+        "alternateName": "Afya Mile Dental",
         "description": "Premier dental clinic in Nairobi CBD offering comprehensive dental care using state-of-the-art technology. Specializing in orthodontics, cosmetic dentistry, dental implants, pediatric dentistry, and 24/7 emergency care with experienced professionals.",
         "slogan": "Your Smile, Our Priority",
         "url": "https://afyamiledental.com",
+        "sameAs": [
+            "https://www.google.com/maps/place/Afya+Mile+Dental+Clinic",
+            "https://business.google.com/n/afya-mile-dental-clinic"
+        ],
         "logo": {
             "@type": "ImageObject",
-            "url": "logo.png",
+            "url": "https://afyamiledental.com/logo.png",
             "width": "180",
             "height": "180"
         },
         "image": [
-            "logo.png"
+            "https://afyamiledental.com/logo.png",
+            "https://afyamiledental.com/clinic-chair.png",
+            "https://afyamiledental.com/clinic-reception.png"
         ],
         "telephone": "+254720400391",
         "email": "afyamiledentalclinic680@gmail.com",
         "isAcceptingNewPatients": true,
+        "knowsLanguage": ["English", "Swahili"],
+        "paymentAccepted": ["Cash", "Credit Card", "Mobile Money", "Insurance"],
+        "currenciesAccepted": "KES",
+        "priceRange": "$$",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "680 hotel building; ground floor opposite Bruce house",
@@ -213,17 +225,17 @@
     <link rel="shortcut icon" href="logo.png">
     <link rel="mask-icon" href="logo.png" color="#007bff">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <!-- Google Analytics - Replace with your actual measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
+        gtag('config', 'G-XXXXXXXXXX');
     </script>
     
-    <!-- Google Search Console Verification -->
-    <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE">
+    <!-- Google Search Console Verification - Replace with your verification code -->
+    <meta name="google-site-verification" content="your_verification_code_here">
     
     <!-- Font Awesome 6.5 (Latest) -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
