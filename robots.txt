@@ -1,6 +1,26 @@
 User-agent: *
 Allow: /
 
+# Sitemap
+Sitemap: https://afyamiledental.com/sitemap.xml
+
+# Disallow unnecessary files
+Disallow: /README.md
+
+# Allow all pages
+Allow: /index.html
+Allow: /cbd-location.html
+Allow: /multilingual-services.html
+Allow: /general-dentistry.html
+Allow: /cosmetic-dentistry.html
+Allow: /orthodontics.html
+Allow: /dental-implants.html
+Allow: /pediatric-dentistry.html
+Allow: /emergency-care.html
+
+# Crawl-delay (optional)
+Crawl-delay: 1
+
 # Allow crawling of all service pages
 Allow: /general-dentistry.html
 Allow: /orthodontics.html
